@@ -59,21 +59,37 @@ const IndexPage = () => {
 
                 <Section id="chairman" eyebrow="message from the" title="chairman" dark>
                     <div className="two-col">
-                        <p>
-                            We built Altairith to preserve and compound capital—financial
-                            and intellectual. Our philosophy is simple: lead from above,
-                            act with precision, and build what lasts. That means pairing
-                            strategic oversight with disciplined execution across the
-                            sectors we serve.
-                        </p>
+                        <div>
+                            <p>
+                                I'm Christian Vari, and I founded Altairith Capital with a
+                                clear vision: to bridge cutting-edge cybersecurity
+                                expertise with strategic capital stewardship. As a
+                                security researcher specializing in web3 and fintech
+                                technologies, I've dedicated my career to understanding
+                                the intersection of innovation and security.
+                            </p>
+                            <p>
+                                Through founding Codezen, our cybersecurity firm, and my
+                                work as an inventor holding various patents, I've seen
+                                firsthand how technological innovation and disciplined
+                                execution create lasting value.
+                            </p>
+                            <p>
+                                At Altairith, we combine this deep technical understanding
+                                with strategic oversight to build resilient systems that
+                                protect and compound both financial and intellectual
+                                capital across the sectors we serve.
+                            </p>
+                        </div>
                         <div style={{ display: "flex", justifyContent: "center" }}>
                             <img
-                                alt="Chairman portrait"
-                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop"
+                                alt="Christian Vari, Chairman"
+                                src={require("../images/christian_vari.jpeg").default}
                                 style={{
                                     width: "min(380px, 100%)",
                                     maxHeight: 420,
                                     objectFit: "cover",
+                                    objectPosition: "top",
                                     borderRadius: 14,
                                     border: "1px solid var(--color-border)",
                                     boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
@@ -232,11 +248,112 @@ export default IndexPage;
 export const Head = () => (
     <>
         <html lang="en" />
-        <title>Altairith Capital</title>
+        <title>Altairith Capital - Strategic Investment & Cybersecurity Excellence</title>
+
+        {/* Basic Meta Tags */}
+        <meta
+            name="description"
+            content="Altairith Capital is a long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, inventor and security researcher, we combine strategic oversight with technical expertise to build resilient systems that protect and compound capital."
+        />
+        <meta
+            name="keywords"
+            content="Altairith Capital, Christian Vari, cybersecurity investment, web3 security, fintech capital, blockchain security, Codezen, venture capital, strategic holding company, patent inventor, security research"
+        />
+        <meta name="author" content="Christian Vari" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#001560" />
+        <link rel="canonical" href="https://www.altairith.capital/" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Altairith Capital - Strategic Investment & Cybersecurity Excellence"
+        />
+        <meta
+            property="og:description"
+            content="Long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, security researcher and inventor."
+        />
+        <meta property="og:url" content="https://www.altairith.capital/" />
+        <meta property="og:site_name" content="Altairith Capital" />
+        <meta
+            property="og:image"
+            content="https://www.altairith.capital/static/altairith-og-image.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="Altairith Capital - Lead from Above, Build to Endure"
+        />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Altairith Capital - Strategic Investment & Cybersecurity Excellence"
+        />
+        <meta
+            name="twitter:description"
+            content="Long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, security researcher and inventor."
+        />
+        <meta
+            name="twitter:image"
+            content="https://www.altairith.capital/static/altairith-og-image.jpg"
+        />
+        <meta
+            name="twitter:image:alt"
+            content="Altairith Capital - Lead from Above, Build to Endure"
+        />
+        <meta name="twitter:creator" content="@christianvari_" />
+        <meta name="twitter:site" content="@altairithcapital" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="United States" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="revisit-after" content="7 days" />
+
+        {/* Structured Data - JSON-LD */}
+        <script type="application/ld+json">
+            {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Altairith Capital",
+                url: "https://www.altairith.capital",
+                logo: "https://www.altairith.capital/static/logo.svg",
+                description:
+                    "Strategic investment holding company specializing in cybersecurity, web3, and fintech sectors.",
+                founder: {
+                    "@type": "Person",
+                    name: "Christian Vari",
+                    jobTitle: "Chairman & Founder",
+                    description:
+                        "Security researcher specializing in web3 and fintech technologies, inventor with various patents, founder of Codezen cybersecurity firm.",
+                },
+                sameAs: [
+                    "https://www.linkedin.com/company/altairith-capital",
+                    "https://twitter.com/altairithcapital",
+                ],
+                contactPoint: {
+                    "@type": "ContactPoint",
+                    contactType: "general inquiry",
+                    url: "https://www.altairith.capital/#contact",
+                },
+                address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "US",
+                },
+                industry: "Investment Management",
+                specialty: ["Cybersecurity", "Web3", "Fintech", "Blockchain Security"],
+            })}
+        </script>
     </>
 );

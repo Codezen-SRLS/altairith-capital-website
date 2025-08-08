@@ -1,29 +1,40 @@
 {
-  "name": "altairith-capital",
-  "version": "1.0.0",
-  "private": true,
-  "description": "altairith-capital",
-  "author": "Christian Vari",
-  "keywords": [
-    "gatsby"
-  ],
-  "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
-  },
-  "dependencies": {
-    "gatsby": "^5.14.1",
-    "gatsby-plugin-google-gtag": "^5.14.0",
-    "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-manifest": "^5.14.0",
-    "gatsby-plugin-sharp": "^5.14.0",
-    "gatsby-plugin-sitemap": "^6.14.0",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-sharp": "^5.14.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "name": "altairith-capital",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Altairith Capital - Strategic investment holding company specializing in cybersecurity, web3, and fintech sectors. Founded by Christian Vari, security researcher and patent inventor.",
+    "author": "Christian Vari",
+    "keywords": [
+        "altairith capital",
+        "christian vari",
+        "cybersecurity investment",
+        "web3 security",
+        "fintech capital",
+        "blockchain security",
+        "codezen",
+        "venture capital",
+        "strategic holding company",
+        "patent inventor",
+        "security research",
+        "gatsby"
+    ],
+    "scripts": {
+        "develop": "gatsby develop",
+        "start": "gatsby develop",
+        "build": "gatsby build",
+        "serve": "gatsby serve",
+        "clean": "gatsby clean"
+    },
+    "dependencies": {
+        "gatsby": "^5.14.1",
+        "gatsby-plugin-google-gtag": "^5.14.0",
+        "gatsby-plugin-image": "^3.14.0",
+        "gatsby-plugin-manifest": "^5.14.0",
+        "gatsby-plugin-sharp": "^5.14.0",
+        "gatsby-plugin-sitemap": "^6.14.0",
+        "gatsby-source-filesystem": "^5.14.0",
+        "gatsby-transformer-sharp": "^5.14.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
 }

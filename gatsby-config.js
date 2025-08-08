@@ -3,8 +3,14 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `Altairith Capital`,
-        siteUrl: `https://www.altairith.com`,
+        title: `Altairith Capital - Strategic Investment & Cybersecurity Excellence`,
+        description: `Long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, security researcher and inventor.`,
+        siteUrl: `https://www.altairith.capital`,
+        author: `Christian Vari`,
+        keywords: `Altairith Capital, Christian Vari, cybersecurity investment, web3 security, fintech capital, blockchain security, Codezen, venture capital, strategic holding company, patent inventor, security research`,
+        image: `https://www.altairith.capital/static/altairith-og-image.jpg`,
+        twitterUsername: `@christianvari_`,
+        companyTwitter: `@altairithcapital`,
     },
     plugins: [
         // "gatsby-plugin-google-gtag",
