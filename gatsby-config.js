@@ -1,6 +1,9 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+require(`dotenv`).config({ path: `.env` });
+
 module.exports = {
     siteMetadata: {
         title: `Altairith Capital`,
