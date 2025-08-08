@@ -41,8 +41,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-robots-txt`,
             options: {
-                host: `https://www.codezen.tech`,
-                sitemap: `https://www.codezen.tech/sitemap-index.xml`,
+                host: `https://www.altairith.capital`,
+                sitemap: `https://www.altairith.capital/sitemap-index.xml`,
                 policy: [{ userAgent: `*`, allow: `/` }],
             },
         },
