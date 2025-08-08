@@ -229,4 +229,14 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>Altairith Capital</title>;
+export const Head = () => (
+    <>
+        <html lang="en" />
+        <title>Altairith Capital</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#001560" />
+    </>
+);
