@@ -15,44 +15,24 @@ const IndexPage = () => {
                 <Section id="about" eyebrow="about" title="Altairith">
                     <div className="two-col">
                         <p>
-                            The name <strong>Altairith</strong> fuses Altair—the soaring
-                            star and eagle—with algorithmic rigor. We operate as a
+                            The name <strong>Altairith</strong> fuses Altair, the soaring
+                            star and eagle, with algorithmic rigor. We operate as a
                             long‑horizon holding company that keeps a clear, elevated
                             perspective over complex systems while executing with
                             precision, structure, and resilience.
                         </p>
-                        <div>
-                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                                {[
-                                    "Healthcare & Education",
-                                    "Food & Beverage",
-                                    "Energy & Industrial",
-                                    "Agriculture & Manufacturing",
-                                    "Hospitality & Entertainment",
-                                    "Information Technology",
-                                ].map((item) => (
-                                    <li
+                        <div className="industries-grid" role="list">
+                            {["Cybersecurity", "Intellectual Property", "Education"].map(
+                                (item) => (
+                                    <div
                                         key={item}
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 12,
-                                            marginBottom: 10,
-                                        }}
+                                        className="industry-item"
+                                        role="listitem"
                                     >
-                                        <span
-                                            style={{
-                                                width: 10,
-                                                height: 10,
-                                                background: "var(--color-gold)",
-                                                borderRadius: 999,
-                                                display: "inline-block",
-                                            }}
-                                        />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                                        {item}
+                                    </div>
+                                ),
+                            )}
                         </div>
                     </div>
                 </Section>
@@ -131,14 +111,6 @@ const IndexPage = () => {
                     </div>
                 </Section>
 
-                <Section id="vision" title="Vision" eyebrow="our">
-                    <p>
-                        To be a steady, high‑altitude partner—combining the eagle’s
-                        perspective with algorithmic precision—to safeguard and grow the
-                        assets entrusted to us.
-                    </p>
-                </Section>
-
                 <Section id="values" title="Values" eyebrow="our">
                     <div className="values-grid">
                         {[
@@ -159,7 +131,7 @@ const IndexPage = () => {
                             },
                             {
                                 t: "Persistence",
-                                d: "Build to endure—compound value methodically over the long term.",
+                                d: "Build to endure and compound value methodically over the long term.",
                                 i: "infinity",
                             },
                         ].map((v) => (

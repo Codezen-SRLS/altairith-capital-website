@@ -39,7 +39,6 @@ const Header = () => {
                     <a href="#about">About</a>
                     <a href="#chairman">Chairman</a>
                     <a href="#mission">Mission</a>
-                    <a href="#vision">Vision</a>
                     <a href="#values">Values</a>
                     <a href="#contact">Contact</a>
                 </nav>
