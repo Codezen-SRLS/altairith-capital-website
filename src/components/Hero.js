@@ -9,8 +9,8 @@ const Hero = () => {
                     <span>Altairith Capital</span>
                 </div>
                 <h1 className="hero-title">
-                    Lead from <span className="accent-gold">Above</span>. Build to{" "}
-                    <span className="accent-gold">Endure</span>.
+                    Lead from <span className="accent-gold">Above</span>.<br />
+                    Build to <span className="accent-gold">Endure</span>.
                 </h1>
                 <p className="hero-subtitle">
                     Altairith blends the clarity of Altair—the soaring eagle—with the
