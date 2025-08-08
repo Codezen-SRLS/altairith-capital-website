@@ -7,12 +7,12 @@ on:
   push:
     branches: [ main ]
 
-env: 
-  GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
-  CLARITY_ID: ${{ secrets.CLARITY_ID }}
-  # GATSBY_EMAILJS_SERVICE_ID: ${{ secrets.GATSBY_EMAILJS_SERVICE_ID }}
-  # GATSBY_EMAILJS_TEMPLATE_ID: ${{ secrets.GATSBY_EMAILJS_TEMPLATE_ID }}
-  # GATSBY_EMAILJS_PUBLIC_KEY: ${{ secrets.GATSBY_EMAILJS_PUBLIC_KEY }}
+# env: 
+#   # GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+#   # CLARITY_ID: ${{ secrets.CLARITY_ID }}
+#   # GATSBY_EMAILJS_SERVICE_ID: ${{ secrets.GATSBY_EMAILJS_SERVICE_ID }}
+#   # GATSBY_EMAILJS_TEMPLATE_ID: ${{ secrets.GATSBY_EMAILJS_TEMPLATE_ID }}
+#   # GATSBY_EMAILJS_PUBLIC_KEY: ${{ secrets.GATSBY_EMAILJS_PUBLIC_KEY }}
 
 jobs:
   deploy:
@@ -24,10 +24,6 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-        token: ${{ secrets.PAT }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
