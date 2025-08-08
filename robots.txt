@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.codezen.tech/sitemap-index.xml
-Host: https://www.codezen.tech
+Sitemap: https://www.altairith.capital/sitemap-index.xml
+Host: https://www.altairith.capital
