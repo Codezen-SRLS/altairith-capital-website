@@ -3,11 +3,11 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `Altairith Capital - Strategic Investment & Cybersecurity Excellence`,
+        title: `Altairith Capital`,
         description: `Long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, security researcher and inventor.`,
         siteUrl: `https://www.altairith.capital`,
         author: `Christian Vari`,
-        keywords: `Altairith Capital, Christian Vari, cybersecurity investment, web3 security, fintech capital, blockchain security, Codezen, venture capital, strategic holding company, patent inventor, security research`,
+        keywords: `Altairith Capital, Christian Vari, Codezen, web3 security, fintech capital, blockchain security, strategic holding company, patent inventor, security research`,
         image: `https://www.altairith.capital/static/altairith-og-image.jpg`,
         twitterUsername: `@christianvari_`,
         companyTwitter: `@altairithcapital`,
@@ -37,6 +37,21 @@ module.exports = {
                 path: "./src/images/",
             },
             __key: "images",
+        },
+        {
+            resolve: `gatsby-plugin-robots-txt`,
+            options: {
+                host: `https://www.codezen.tech`,
+                sitemap: `https://www.codezen.tech/sitemap-index.xml`,
+                policy: [{ userAgent: `*`, allow: `/` }],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-clarity`,
+            options: {
+                // Valore stringa per l'ID progetto Clarity
+                clarity_project_id: process.env.CLARITY_ID,
+            },
         },
     ],
 };
