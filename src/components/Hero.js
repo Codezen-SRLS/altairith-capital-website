@@ -13,7 +13,7 @@ const Hero = () => {
                     Build to <span className="accent-gold">Endure</span>.
                 </h1>
                 <p className="hero-subtitle">
-                    Altairith blends the clarity of Altair—the soaring eagle—with the
+                    Altairith blends the clarity of Altair, the soaring eagle, with the
                     discipline of algorithms. We steward financial and intellectual
                     capital with long-term stability, applying cybersecurity and
                     blockchain expertise to act with precision and design resilient

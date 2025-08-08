@@ -37,7 +37,7 @@ const IndexPage = () => {
                     </div>
                 </Section>
 
-                <Section id="chairman" eyebrow="message from the" title="chairman" dark>
+                <Section id="chairman" eyebrow="message from the" title="Chairman" dark>
                     <div className="two-col">
                         <div>
                             <p>
@@ -79,9 +79,7 @@ const IndexPage = () => {
                     </div>
                 </Section>
 
-                {/* CEO section removed per request */}
-
-                <Section id="mission" title="mission" eyebrow="our">
+                <Section id="mission" title="Mission" eyebrow="our">
                     <div className="two-col">
                         <p>
                             Steward growth with an ownership mindset. We unite capital,
@@ -148,7 +146,7 @@ const IndexPage = () => {
 
                 {/* Sectors section removed per request */}
 
-                <Section id="contact" title="Get in Touch" eyebrow="">
+                <Section id="contact" title="Get in touch" eyebrow="">
                     <div className="contact-grid">
                         <div className="contact-card">
                             <h3>Office</h3>

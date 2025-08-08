@@ -469,57 +469,130 @@ main {
     filter: blur(40px) saturate(110%);
 }
 
-/* Hero Illustration: abstract star/eagle motif */
+/* Hero Illustration: constellation pattern inspired by Altair */
 .hero-illustration {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     mix-blend-mode: screen;
-    background: radial-gradient(
-            90px 60px at 72% 28%,
-            rgba(193, 157, 108, 0.35),
-            transparent 60%
+    background: 
+        /* Altair - brightest star (center-right) */ radial-gradient(
+            8px 8px at 68% 32%,
+            rgba(255, 255, 255, 0.9),
+            rgba(193, 157, 108, 0.6) 50%,
+            transparent 100%
+        ),
+        radial-gradient(16px 16px at 68% 32%, rgba(193, 157, 108, 0.4), transparent 70%),
+        /* Secondary bright stars */
+            radial-gradient(
+                5px 5px at 45% 25%,
+                rgba(255, 255, 255, 0.75),
+                rgba(193, 157, 108, 0.5) 50%,
+                transparent 100%
+            ),
+        radial-gradient(
+            4px 4px at 72% 18%,
+            rgba(255, 255, 255, 0.7),
+            rgba(193, 157, 108, 0.4) 50%,
+            transparent 100%
         ),
         radial-gradient(
-            520px 320px at 85% 25%,
-            rgba(193, 157, 108, 0.08),
-            transparent 70%
+            4px 4px at 58% 45%,
+            rgba(255, 255, 255, 0.65),
+            rgba(193, 157, 108, 0.35) 50%,
+            transparent 100%
         ),
-        radial-gradient(3px 3px at 60% 35%, rgba(255, 255, 255, 0.55), transparent 100%),
-        radial-gradient(2px 2px at 62% 36%, rgba(255, 255, 255, 0.45), transparent 100%),
-        radial-gradient(2px 2px at 58% 34%, rgba(255, 255, 255, 0.35), transparent 100%),
-        radial-gradient(1px 1px at 64% 40%, rgba(255, 255, 255, 0.5), transparent 100%),
-        radial-gradient(1px 1px at 56% 42%, rgba(255, 255, 255, 0.45), transparent 100%);
+        /* Medium stars forming constellation pattern */
+            radial-gradient(
+                3px 3px at 52% 28%,
+                rgba(255, 255, 255, 0.6),
+                transparent 100%
+            ),
+        radial-gradient(3px 3px at 75% 26%, rgba(255, 255, 255, 0.55), transparent 100%),
+        radial-gradient(2px 2px at 63% 20%, rgba(255, 255, 255, 0.5), transparent 100%),
+        radial-gradient(2px 2px at 48% 38%, rgba(255, 255, 255, 0.5), transparent 100%),
+        radial-gradient(2px 2px at 65% 42%, rgba(255, 255, 255, 0.45), transparent 100%),
+        /* Distant stars */
+            radial-gradient(
+                1px 1px at 35% 20%,
+                rgba(255, 255, 255, 0.4),
+                transparent 100%
+            ),
+        radial-gradient(1px 1px at 78% 35%, rgba(255, 255, 255, 0.35), transparent 100%),
+        radial-gradient(1px 1px at 42% 50%, rgba(255, 255, 255, 0.3), transparent 100%),
+        radial-gradient(1px 1px at 85% 22%, rgba(255, 255, 255, 0.35), transparent 100%),
+        radial-gradient(1px 1px at 55% 15%, rgba(255, 255, 255, 0.3), transparent 100%),
+        /* Subtle nebula glow */
+            radial-gradient(
+                800px 400px at 60% 30%,
+                rgba(193, 157, 108, 0.08),
+                transparent 80%
+            );
 }
 
 @media (max-width: 768px) {
     .hero-illustration {
-        background: radial-gradient(
-                60px 40px at 50% 30%,
-                rgba(193, 157, 108, 0.25),
-                transparent 60%
-            ),
-            radial-gradient(
-                280px 180px at 50% 30%,
-                rgba(193, 157, 108, 0.06),
-                transparent 70%
-            ),
-            radial-gradient(
-                2px 2px at 50% 35%,
-                rgba(255, 255, 255, 0.4),
+        background: 
+            /* Altair - main star (centered) */ radial-gradient(
+                6px 6px at 50% 30%,
+                rgba(255, 255, 255, 0.8),
+                rgba(193, 157, 108, 0.5) 50%,
                 transparent 100%
             ),
             radial-gradient(
-                1px 1px at 52% 36%,
+                12px 12px at 50% 30%,
+                rgba(193, 157, 108, 0.3),
+                transparent 70%
+            ),
+            /* Constellation stars */
+                radial-gradient(
+                    3px 3px at 35% 25%,
+                    rgba(255, 255, 255, 0.6),
+                    transparent 100%
+                ),
+            radial-gradient(
+                3px 3px at 65% 25%,
+                rgba(255, 255, 255, 0.55),
+                transparent 100%
+            ),
+            radial-gradient(
+                2px 2px at 42% 35%,
+                rgba(255, 255, 255, 0.5),
+                transparent 100%
+            ),
+            radial-gradient(
+                2px 2px at 58% 35%,
+                rgba(255, 255, 255, 0.5),
+                transparent 100%
+            ),
+            /* Distant stars */
+                radial-gradient(
+                    1px 1px at 30% 20%,
+                    rgba(255, 255, 255, 0.4),
+                    transparent 100%
+                ),
+            radial-gradient(
+                1px 1px at 70% 20%,
                 rgba(255, 255, 255, 0.35),
                 transparent 100%
             ),
             radial-gradient(
-                1px 1px at 48% 34%,
-                rgba(255, 255, 255, 0.25),
+                1px 1px at 45% 40%,
+                rgba(255, 255, 255, 0.3),
                 transparent 100%
-            );
+            ),
+            radial-gradient(
+                1px 1px at 55% 40%,
+                rgba(255, 255, 255, 0.3),
+                transparent 100%
+            ),
+            /* Subtle nebula glow */
+                radial-gradient(
+                    400px 200px at 50% 30%,
+                    rgba(193, 157, 108, 0.06),
+                    transparent 80%
+                );
     }
 }
 
