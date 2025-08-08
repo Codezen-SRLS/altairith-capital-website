@@ -13,11 +13,30 @@ const Header = () => {
             setMenuOpen(false);
         }
     };
+
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+
+        // On screens > 900px, main element is the scroll container
+        // On screens <= 900px, window/body is the scroll container
+        const isLargeScreen = window.innerWidth > 900;
+
+        if (isLargeScreen) {
+            // Scroll the main element on large screens
+            const mainElement = document.querySelector("main");
+            if (mainElement) {
+                mainElement.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        } else {
+            // Scroll the window on smaller screens
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
     return (
         <header className="site-header">
             <div className="container nav">
                 <div className="site-logo">
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                         <img src={logo} alt="Altairith Capital" />
                     </Link>
                     <span className="site-title">Altairith Capital</span>
