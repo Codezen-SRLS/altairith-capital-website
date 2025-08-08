@@ -1,55 +1,54 @@
-import * as React from "react"
-import { Link } from "gatsby"
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import React from "react";
+import { Link } from "gatsby";
+import Header from "../components/Header";
 
 const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    return (
+        <>
+            <Header isHome={false} />
+            <main>
+                <section className="hero" role="banner" aria-labelledby="not-found-title">
+                    <div className="hero-illustration" aria-hidden="true" />
+                    <div className="container hero-inner">
+                        <div className="hero-brand">
+                            <span>Altairith Capital</span>
+                        </div>
+                        <h1 id="not-found-title" className="hero-title">
+                            Page not found
+                        </h1>
+                        <p className="hero-subtitle">
+                            The page you’re looking for doesn’t exist, was moved, or is
+                            temporarily unavailable.
+                        </p>
+                        <div className="cta-row">
+                            <Link to="/" className="btn btn-primary">
+                                Go home
+                            </Link>
+                            <a href="mailto:info@altairith.capital" className="btn">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </>
+    );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
 export const Head = () => (
-  <>
-    <html lang="en" />
-    <title>Not found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  </>
-)
+    <>
+        <html lang="en" />
+        <title>404 — Altairith Capital</title>
+        <meta
+            name="description"
+            content="404 Page not found — Altairith Capital. The page you’re looking for doesn’t exist or was moved."
+        />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+    </>
+);

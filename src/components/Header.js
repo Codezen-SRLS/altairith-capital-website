@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import logo from "../images/logo.svg";
 
-const Header = () => {
+const Header = ({ isHome = true }) => {
     const [menuOpen, setMenuOpen] = React.useState(false);
 
     const handleToggleMenu = () => setMenuOpen((prev) => !prev);
@@ -15,6 +15,10 @@ const Header = () => {
     };
 
     const handleLogoClick = (e) => {
+        if (!isHome) {
+            // On non-home pages, allow default navigation to "/"
+            return;
+        }
         e.preventDefault();
 
         // On screens > 900px, main element is the scroll container
@@ -32,6 +36,7 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
+    const base = isHome ? "" : "/";
     return (
         <header className="site-header">
             <div className="container nav">
@@ -55,11 +60,11 @@ const Header = () => {
                     aria-label="Primary"
                     onClick={handleNavClick}
                 >
-                    <a href="#about">About</a>
-                    <a href="#chairman">Chairman</a>
-                    <a href="#mission">Mission</a>
-                    <a href="#values">Values</a>
-                    <a href="#contact">Contact</a>
+                    <a href={`${base}#about`}>About</a>
+                    <a href={`${base}#chairman`}>Chairman</a>
+                    <a href={`${base}#mission`}>Mission</a>
+                    <a href={`${base}#values`}>Values</a>
+                    <a href={`${base}#contact`}>Contact</a>
                 </nav>
             </div>
         </header>
