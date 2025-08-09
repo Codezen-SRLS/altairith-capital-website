@@ -13,6 +13,8 @@ const useSiteMetadata = () => {
                     image
                     twitterUsername
                     companyTwitter
+                    contactEmail
+                    contactAddress
                 }
             }
         }

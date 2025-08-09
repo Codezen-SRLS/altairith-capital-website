@@ -8,7 +8,8 @@ import SEO from "../components/SEO";
 import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const IndexPage = () => {
-    const { title } = useSiteMetadata();
+    const siteMeta = useSiteMetadata();
+    const { title } = siteMeta;
     return (
         <>
             <Header />
@@ -148,57 +149,24 @@ const IndexPage = () => {
                 </Section>
 
                 <Section id="contact" title="Get in touch" eyebrow="">
-                    <div className="contact-grid">
-                        <div className="contact-card">
-                            <h3>Office</h3>
-                            <p>
-                                placeholder
-                                <br />
-                                placeholder
-                            </p>
-                            <p>
-                                <br />E info@altairith.capital
-                            </p>
+                    <div className="contact-cards">
+                        <div className="value-card">
+                            <div className="value-icon" aria-hidden="true">
+                                <Icon name="pin" size={18} />
+                            </div>
+                            <h3>Address</h3>
+                            <p>{siteMeta.contactAddress}</p>
                         </div>
-                        <div className="contact-card">
-                            <h3>Send us a direct message</h3>
-                            <form
-                                className="contact-form"
-                                name="contact"
-                                method="POST"
-                                data-netlify="true"
-                            >
-                                <input type="hidden" name="form-name" value="contact" />
-                                <div className="row">
-                                    <div>
-                                        <label htmlFor="name">Name</label>
-                                        <input
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email">Email</label>
-                                        <input
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                                <div style={{ marginTop: 12 }}>
-                                    <label htmlFor="message">Message</label>
-                                    <textarea id="message" name="message" required />
-                                </div>
-                                <div className="actions">
-                                    <button className="btn btn-primary" type="submit">
-                                        Send
-                                    </button>
-                                </div>
-                            </form>
+                        <div className="value-card">
+                            <div className="value-icon" aria-hidden="true">
+                                <Icon name="mail" size={18} />
+                            </div>
+                            <h3>Email</h3>
+                            <p>
+                                <a href={`mailto:${siteMeta.contactEmail}`}>
+                                    {siteMeta.contactEmail}
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </Section>

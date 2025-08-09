@@ -80,11 +80,60 @@ const InfinityIcon = ({ size = 24 }) => (
     </svg>
 );
 
+const Mail = ({ size = 24 }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+    >
+        <rect
+            x="3"
+            y="6"
+            width="18"
+            height="12"
+            rx="2"
+            stroke={stroke}
+            strokeWidth="1.8"
+        />
+        <path
+            d="M4 7l8 6 8-6"
+            stroke={stroke}
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+
+const MapPin = ({ size = 24 }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+    >
+        <path
+            d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"
+            stroke={stroke}
+            strokeWidth="1.8"
+            strokeLinejoin="round"
+        />
+        <circle cx="12" cy="11" r="2.2" stroke={stroke} strokeWidth="1.6" />
+    </svg>
+);
+
 const ICONS = {
     star: Star,
     arrow: ArrowUpRight,
     flex: FlexNodes,
     infinity: InfinityIcon,
+    mail: Mail,
+    pin: MapPin,
 };
 
 const Icon = ({ name, size }) => {
