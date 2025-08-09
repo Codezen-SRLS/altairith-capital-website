@@ -122,12 +122,12 @@ main {
     z-index: 50;
     background: radial-gradient(
             700px 240px at 12% 0%,
-            rgba(193, 157, 108, 0.12),
+            rgba(193, 157, 108, 0.18),
             transparent 60%
         ),
-        linear-gradient(180deg, rgba(20, 28, 72, 0.85), rgba(10, 14, 40, 0.6));
+        linear-gradient(180deg, rgba(20, 28, 72, 0.6), rgba(10, 14, 40, 0.4));
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-header .container {
@@ -156,25 +156,29 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
     min-height: var(--header-height);
 }
 
 @media (max-width: 1024px) {
     .site-header .nav {
-        padding: 16px 0;
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 }
 
 @media (max-width: 834px) {
     .site-header .nav {
-        padding: 14px 0;
+        padding-top: 14px;
+        padding-bottom: 14px;
     }
 }
 
 @media (max-width: 768px) {
     .site-header .nav {
-        padding: 12px 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 }
 
@@ -775,10 +779,31 @@ main {
     bottom: 36px;
     transform: rotate(-90deg);
     transform-origin: left bottom;
-    font-size: 10px;
-    letter-spacing: 0.4em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.42em;
     text-transform: uppercase;
     color: var(--color-gold);
+    text-shadow: 0 0 6px rgba(193, 157, 108, 0.45), 0 0 14px rgba(193, 157, 108, 0.25);
+    animation: scrollGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollGlow {
+    0%,
+    100% {
+        opacity: 0.75;
+        text-shadow: 0 0 4px rgba(193, 157, 108, 0.35), 0 0 10px rgba(193, 157, 108, 0.2);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(193, 157, 108, 0.7), 0 0 24px rgba(193, 157, 108, 0.45);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-indicator {
+        animation: none;
+    }
 }
 
 @media (max-width: 1024px) {
