@@ -14,6 +14,7 @@ module.exports = {
         image: `https://www.altairith.capital/static/altairith-og-image.jpg`,
         twitterUsername: `@christianvari_`,
         companyTwitter: `@altairithcapital`,
+        contactEmail: `info@altairith.capital`,
     },
     plugins: [
         // "gatsby-plugin-google-gtag",
@@ -52,7 +53,6 @@ module.exports = {
         {
             resolve: `gatsby-plugin-clarity`,
             options: {
-                // Valore stringa per l'ID progetto Clarity
                 clarity_project_id: process.env.CLARITY_ID,
             },
         },

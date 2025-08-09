@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
+import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const NotFoundPage = () => {
+    const { title, contactEmail } = useSiteMetadata();
     return (
         <>
             <Header isHome={false} />
@@ -11,7 +14,7 @@ const NotFoundPage = () => {
                     <div className="hero-illustration" aria-hidden="true" />
                     <div className="container hero-inner">
                         <div className="hero-brand">
-                            <span>Altairith Capital</span>
+                            <span>{title}</span>
                         </div>
                         <h1 id="not-found-title" className="hero-title">
                             Page not found
@@ -24,7 +27,12 @@ const NotFoundPage = () => {
                             <Link to="/" className="btn btn-primary">
                                 Go home
                             </Link>
-                            <a href="mailto:info@altairith.capital" className="btn">
+                            <a
+                                href={`mailto:${
+                                    contactEmail || "info@altairith.capital"
+                                }`}
+                                className="btn"
+                            >
                                 Contact Us
                             </a>
                         </div>
@@ -39,16 +47,10 @@ export default NotFoundPage;
 
 export const Head = () => (
     <>
-        <html lang="en" />
-        <title>404 — Altairith Capital</title>
-        <meta
-            name="description"
-            content="404 Page not found — Altairith Capital. The page you’re looking for doesn’t exist or was moved."
-        />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        <SEO
+            title="404 — Altairith Capital"
+            robots="noindex, nofollow"
+            pathname="/404/"
         />
     </>
 );

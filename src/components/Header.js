@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 import logo from "../images/logo.svg";
+import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const Header = ({ isHome = true }) => {
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const { title } = useSiteMetadata();
 
     const handleToggleMenu = () => setMenuOpen((prev) => !prev);
     const handleNavClick = (e) => {
@@ -42,9 +44,9 @@ const Header = ({ isHome = true }) => {
             <div className="container nav">
                 <div className="site-logo">
                     <Link to="/" onClick={handleLogoClick}>
-                        <img src={logo} alt="Altairith Capital" />
+                        <img src={logo} alt={title} />
                     </Link>
-                    <span className="site-title">Altairith Capital</span>
+                    <span className="site-title">{title}</span>
                 </div>
                 <button
                     className="menu-toggle"

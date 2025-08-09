@@ -1,19 +1,21 @@
 import React from "react";
+import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const Hero = () => {
+    const { title } = useSiteMetadata();
     return (
         <section className="hero" role="banner">
             <div className="hero-illustration" aria-hidden="true" />
             <div className="container hero-inner">
                 <div className="hero-brand">
-                    <span>Altairith Capital</span>
+                    <span>{title}</span>
                 </div>
                 <h1 className="hero-title">
                     Lead from <span className="accent-gold">Above</span>.<br />
                     Build to <span className="accent-gold">Endure</span>.
                 </h1>
                 <p className="hero-subtitle">
-                    Altairith blends the clarity of Altair, the soaring eagle, with the
+                    {title} blends the clarity of Altair, the soaring eagle, with the
                     discipline of algorithms. We steward financial and intellectual
                     capital with long-term stability, applying cybersecurity and
                     blockchain expertise to act with precision and design resilient
