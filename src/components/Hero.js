@@ -15,11 +15,10 @@ const Hero = () => {
                     Build to <span className="accent-gold">Endure</span>.
                 </h1>
                 <p className="hero-subtitle">
-                    {title} blends the clarity of Altair, the soaring eagle, with the
-                    discipline of algorithms. We steward financial and intellectual
-                    capital with long-term stability, applying cybersecurity and
-                    blockchain expertise to act with precision and design resilient
-                    systems.
+                    {title} is a long-horizon holding company merging cybersecurity,
+                    blockchain, and fintech expertise. Founded by Christian Vari, we bring
+                    algorithmic discipline and strategic vision to manage and grow both
+                    financial and intellectual capital with resilience and precision.
                 </p>
                 <div className="cta-row">
                     <a href="#about" className="btn btn-primary">

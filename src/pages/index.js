@@ -19,24 +19,26 @@ const IndexPage = () => {
                 <Section id="about" eyebrow="about" title="Altairith">
                     <div className="two-col">
                         <p>
-                            The name <strong>Altairith</strong> fuses Altair, the soaring
-                            star and eagle, with algorithmic rigor. We operate as a
-                            long‑horizon holding company that keeps a clear, elevated
-                            perspective over complex systems while executing with
-                            precision, structure, and resilience.
+                            Named for Altair, a beacon star, and the sharp precision of
+                            algorithms, <strong>Altairith Capital</strong> symbolizes
+                            elevated insight and disciplined execution. <br /> <br />
+                            We act as a strategic, long-term holding structure in the
+                            realms of cybersecurity, Web3, and fintech innovation with
+                            clarity and resilience.
                         </p>
                         <div className="industries-grid" role="list">
-                            {["Cybersecurity", "Intellectual Property", "Education"].map(
-                                (item) => (
-                                    <div
-                                        key={item}
-                                        className="industry-item"
-                                        role="listitem"
-                                    >
-                                        {item}
-                                    </div>
-                                ),
-                            )}
+                            {[
+                                "Cybersecurity",
+                                "Blockchain",
+                                "Finance",
+                                "Intellectual Property",
+                                "Education",
+                                "Philanthropy",
+                            ].map((item) => (
+                                <div key={item} className="industry-item" role="listitem">
+                                    {item}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </Section>
@@ -47,22 +49,18 @@ const IndexPage = () => {
                             <p>
                                 I'm Christian Vari, and I founded Altairith Capital with a
                                 clear vision: to bridge cutting-edge cybersecurity
-                                expertise with strategic capital stewardship. As a
-                                security researcher specializing in web3 and fintech
-                                technologies, I've dedicated my career to understanding
-                                the intersection of innovation and security.
+                                expertise with strategic capital stewardship.
                             </p>
                             <p>
-                                Through founding Codezen, our cybersecurity firm, and my
-                                work as an inventor holding various patents, I've seen
-                                firsthand how technological innovation and disciplined
-                                execution create lasting value.
+                                As a seasoned security researcher and inventor, the
+                                founder of Codezen, a cybersecurity firm focused on
+                                blockchain and DeFi, I’ve experienced how innovation
+                                demands disciplined execution.
                             </p>
                             <p>
-                                At Altairith, we combine this deep technical understanding
-                                with strategic oversight to build resilient systems that
-                                protect and compound both financial and intellectual
-                                capital across the sectors we serve.
+                                At Altairith Capital, we channel that expertise into
+                                strategic capital stewardship, safeguarding and
+                                compounding both technological and financial assets.
                             </p>
                         </div>
                         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -86,30 +84,23 @@ const IndexPage = () => {
                 <Section id="mission" title="Mission" eyebrow="our">
                     <div className="two-col">
                         <p>
-                            Steward growth with an ownership mindset. We unite capital,
-                            cybersecurity insight, and operating discipline to compound
-                            durable value across the region and beyond.
+                            To steward capital with an ownership mindset, blending
+                            cybersecurity insight and operational rigor to cultivate
+                            sustainable value across Web3, financial services, and
+                            emerging technologies
                         </p>
-                        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                        <div className="industries-grid" role="list">
                             {[
                                 "Ownership Mindset",
                                 "Operational Excellence",
                                 "Shared Success",
                                 "Sustainability",
-                            ].map((p) => (
-                                <li key={p} style={{ marginBottom: 10 }}>
-                                    <span
-                                        style={{
-                                            color: "var(--color-gold)",
-                                            marginRight: 8,
-                                        }}
-                                    >
-                                        —
-                                    </span>
-                                    {p}
-                                </li>
+                            ].map((item) => (
+                                <div key={item} className="industry-item" role="listitem">
+                                    {item}
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 </Section>
 
@@ -118,22 +109,22 @@ const IndexPage = () => {
                         {[
                             {
                                 t: "Excellence",
-                                d: "Pursue high standards and resilient performance in every investment.",
+                                d: "We uphold top-tier performance and resilience in every endeavor.",
                                 i: "star",
                             },
                             {
                                 t: "Accompaniment",
-                                d: "Move in lockstep with regional and global progress to unlock opportunity.",
+                                d: "We pursue regional and global opportunity in harmony, fostering meaningful partnership and progress.",
                                 i: "arrow",
                             },
                             {
                                 t: "Flexibility",
-                                d: "Design options that fit diverse strategies while preserving discipline.",
+                                d: "We design adaptive strategies that preserve discipline while allowing strategic pivoting",
                                 i: "flex",
                             },
                             {
                                 t: "Persistence",
-                                d: "Build to endure and compound value methodically over the long term.",
+                                d: "We build enduring value, methodically and sustainably",
                                 i: "infinity",
                             },
                         ].map((v) => (
