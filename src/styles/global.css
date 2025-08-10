@@ -13,23 +13,32 @@
 
     --max-content-width: 1200px;
     --header-height: 64px;
+    --logo-height: 44px; /* visual logo size without changing header height */
 }
 
 @media (max-width: 1024px) {
     :root {
         --max-content-width: 1000px;
+        --logo-height: 40px;
     }
 }
 
 @media (max-width: 834px) {
     :root {
         --max-content-width: 800px;
+        --logo-height: 36px;
     }
 }
 
 @media (max-width: 768px) {
     :root {
         --max-content-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --logo-height: 32px;
     }
 }
 
@@ -120,12 +129,21 @@ main {
     left: 0;
     right: 0;
     z-index: 50;
-    background: radial-gradient(
-            700px 240px at 12% 0%,
-            rgba(193, 157, 108, 0.18),
+    background:
+        /* gold accent (brand) */ radial-gradient(
+            700px 240px at 62% 0%,
+            rgba(193, 157, 108, 0.12),
             transparent 60%
         ),
-        linear-gradient(180deg, rgba(20, 28, 72, 0.6), rgba(10, 14, 40, 0.4));
+        /* brand blue tint on the right */
+            radial-gradient(
+                900px 300px at 100% 0%,
+                rgba(0, 21, 96, 0.28),
+                transparent 65%
+            ),
+        /* deep header base */
+            linear-gradient(180deg, rgba(7, 10, 22, 0.92), rgba(5, 8, 20, 0.84));
+    background-color: rgba(5, 8, 20, 0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -156,29 +174,29 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: calc((var(--header-height) - var(--logo-height)) / 2);
+    padding-bottom: calc((var(--header-height) - var(--logo-height)) / 2);
     min-height: var(--header-height);
 }
 
 @media (max-width: 1024px) {
     .site-header .nav {
-        padding-top: 16px;
-        padding-bottom: 16px;
+        padding-top: calc((var(--header-height) - var(--logo-height)) / 2);
+        padding-bottom: calc((var(--header-height) - var(--logo-height)) / 2);
     }
 }
 
 @media (max-width: 834px) {
     .site-header .nav {
-        padding-top: 14px;
-        padding-bottom: 14px;
+        padding-top: calc((var(--header-height) - var(--logo-height)) / 2);
+        padding-bottom: calc((var(--header-height) - var(--logo-height)) / 2);
     }
 }
 
 @media (max-width: 768px) {
     .site-header .nav {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: calc((var(--header-height) - var(--logo-height)) / 2);
+        padding-bottom: calc((var(--header-height) - var(--logo-height)) / 2);
     }
 }
 
@@ -201,50 +219,24 @@ main {
 }
 
 .site-logo img {
-    height: 36px;
+    height: var(--logo-height);
 }
 
 @media (max-width: 1024px) {
     .site-logo img {
-        height: 32px;
+        height: var(--logo-height);
     }
 }
 
 @media (max-width: 834px) {
     .site-logo img {
-        height: 30px;
+        height: var(--logo-height);
     }
 }
 
 @media (max-width: 480px) {
     .site-logo img {
-        height: 28px;
-    }
-}
-
-.site-title {
-    color: #eef3ff;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-}
-
-@media (max-width: 834px) {
-    .site-title {
-        font-size: 15px;
-        letter-spacing: 0.3px;
-    }
-}
-
-@media (max-width: 480px) {
-    .site-title {
-        font-size: 14px;
-        letter-spacing: 0.2px;
-    }
-}
-
-@media (max-width: 375px) {
-    .site-title {
-        display: none;
+        height: var(--logo-height);
     }
 }
 

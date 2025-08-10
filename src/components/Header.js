@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import logo from "../images/logo.svg";
+import logo from "../images/logo_header.svg";
 import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const Header = ({ isHome = true }) => {
@@ -46,7 +46,6 @@ const Header = ({ isHome = true }) => {
                     <Link to="/" onClick={handleLogoClick}>
                         <img src={logo} alt={title} />
                     </Link>
-                    <span className="site-title">{title}</span>
                 </div>
                 <button
                     className="menu-toggle"
