@@ -57,5 +57,6 @@ module.exports = {
                 clarity_project_id: process.env.CLARITY_ID,
             },
         },
+        "gatsby-plugin-minify",
     ],
 };
