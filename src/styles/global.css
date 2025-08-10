@@ -1241,3 +1241,20 @@ main {
 .footer a {
     color: var(--color-text-muted-on-dark);
 }
+
+/* In Safari, keep snap but apply anti-flicker tweaks */
+@supports (font: -apple-system-body) {
+    @media (min-width: 901px) {
+        main {
+            scroll-snap-type: none !important;
+            height: auto !important;
+            overflow-y: visible !important;
+            -webkit-overflow-scrolling: auto !important;
+        }
+        .hero,
+        .section {
+            scroll-snap-align: none !important;
+            scroll-snap-stop: normal !important;
+        }
+    }
+}
