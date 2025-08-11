@@ -374,6 +374,24 @@ main {
 }
 
 @media (max-width: 1024px) {
+    .hero .container {
+        padding: 0 60px;
+    }
+}
+
+@media (max-width: 834px) {
+    .hero .container {
+        padding: 0 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero .container {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 1024px) {
     .hero {
         padding: 0 20px;
     }
@@ -388,7 +406,7 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(6px);
-    margin-bottom: 20px;
+    margin-bottom: 28px;
 }
 
 @media (max-width: 834px) {
@@ -600,7 +618,7 @@ main {
 }
 
 .hero-inner {
-    padding: 180px 0 140px;
+    padding: 220px 0 160px;
     text-align: left;
     position: relative;
     z-index: 2;
@@ -608,36 +626,36 @@ main {
 
 @media (max-width: 1024px) {
     .hero-inner {
-        padding: 170px 0 130px;
+        padding: 200px 0 140px;
     }
 }
 
 @media (max-width: 834px) {
     .hero-inner {
-        padding: 140px 0 110px;
+        padding: 160px 0 120px;
         text-align: center;
     }
 }
 
 @media (max-width: 720px) {
     .hero-inner {
-        padding: 120px 0 80px;
+        padding: 140px 0 100px;
         text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     .hero-inner {
-        padding: 100px 0 60px;
+        padding: 110px 0 70px;
     }
 }
 
 /* (removed .eyebrow, .kicker-pill — unused) */
 
 .hero-title {
-    margin: 0 0 22px 0;
+    margin: 0 0 32px 0;
     font-size: clamp(44px, 9vw, 110px);
-    line-height: 0.95;
+    line-height: 1.03;
     font-weight: 800;
     letter-spacing: -0.02em;
     max-width: 18ch;
@@ -646,7 +664,7 @@ main {
 @media (max-width: 1024px) {
     .hero-title {
         font-size: clamp(42px, 8.5vw, 88px);
-        line-height: 0.98;
+        line-height: 1.05;
         max-width: 19ch;
     }
 }
@@ -654,9 +672,9 @@ main {
 @media (max-width: 834px) {
     .hero-title {
         font-size: clamp(38px, 8vw, 70px);
-        line-height: 1.02;
+        line-height: 1.06;
         max-width: none;
-        margin: 0 auto 20px;
+        margin: 0 auto 24px;
     }
 }
 
@@ -666,7 +684,7 @@ main {
         line-height: 1.1;
         max-width: none;
         word-break: break-word;
-        margin: 0 auto 18px;
+        margin: 0 auto 22px;
     }
 }
 
@@ -674,7 +692,7 @@ main {
     .hero-title {
         font-size: clamp(28px, 7vw, 48px);
         line-height: 1.15;
-        margin: 0 auto 24px;
+        margin: 0 auto 26px;
     }
 }
 
@@ -683,9 +701,9 @@ main {
 }
 
 .hero-subtitle {
-    margin: 0 auto 28px;
+    margin: 0 auto 36px;
     font-size: clamp(18px, 2.4vw, 22px);
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--color-text-muted-on-dark);
     opacity: 0.95;
     max-width: 70ch;
@@ -702,7 +720,7 @@ main {
     .hero-subtitle {
         font-size: clamp(16px, 2vw, 18px);
         max-width: 55ch;
-        margin: 0 auto 28px;
+        margin: 0 auto 32px;
     }
 }
 
@@ -710,16 +728,16 @@ main {
     .hero-subtitle {
         font-size: clamp(15px, 3.8vw, 17px);
         max-width: none;
-        margin: 0 auto 32px;
-        line-height: 1.7;
+        margin: 0 auto 34px;
+        line-height: 1.75;
         padding: 0 8px;
     }
 }
 
 .cta-row {
-    margin-top: 28px;
+    margin-top: 40px;
     display: flex;
-    gap: 12px;
+    gap: 16px;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
@@ -727,8 +745,8 @@ main {
 @media (max-width: 834px) {
     .cta-row {
         justify-content: center;
-        gap: 16px;
-        margin-top: 32px;
+        gap: 18px;
+        margin-top: 36px;
     }
 }
 
@@ -736,8 +754,8 @@ main {
     .cta-row {
         flex-direction: column;
         align-items: center;
-        gap: 14px;
-        margin-top: 36px;
+        gap: 16px;
+        margin-top: 38px;
         padding: 0 16px;
     }
 }
@@ -775,7 +793,7 @@ main {
 .scroll-indicator {
     position: absolute;
     left: 40px;
-    bottom: 36px;
+    bottom: 50px;
     transform: rotate(-90deg);
     transform-origin: left bottom;
     font-size: 12px;
@@ -930,6 +948,23 @@ main {
 
 .section .section-header {
     margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 12px;
+}
+.section .section-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px; /* thin */
+    background: linear-gradient(
+        90deg,
+        rgba(193, 157, 108, 1) 0%,
+        rgba(193, 157, 108, 0) 100%
+    );
+    box-shadow: 0 0 12px rgba(193, 157, 108, 0.15);
+    pointer-events: none;
 }
 
 .section-decor {
