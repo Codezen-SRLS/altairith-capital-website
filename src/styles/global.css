@@ -1043,19 +1043,11 @@ main {
         0 8px 16px rgba(193, 157, 108, 0.08);
 }
 
-.industry-item:hover {
-    border-color: rgba(193, 157, 108, 0.6);
-    box-shadow: 0 0 0 2px rgba(193, 157, 108, 0.12) inset,
-        0 6px 22px rgba(193, 157, 108, 0.06);
-}
-
 @media (max-width: 900px) {
     .industries-grid {
         grid-template-columns: 1fr;
     }
 }
-
-/* (removed .muted — unused) */
 
 .values-grid {
     display: grid;

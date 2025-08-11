@@ -93,7 +93,7 @@ const IndexPage = () => {
                             {[
                                 "Ownership Mindset",
                                 "Operational Excellence",
-                                "Shared Success",
+                                "Risk Management",
                                 "Sustainability",
                             ].map((item) => (
                                 <div key={item} className="industry-item" role="listitem">
