@@ -87,7 +87,7 @@ const IndexPage = () => {
                             To steward capital with an ownership mindset, blending
                             cybersecurity insight and operational rigor to cultivate
                             sustainable value across Web3, financial services, and
-                            emerging technologies
+                            emerging technologies.
                         </p>
                         <div className="industries-grid" role="list">
                             {[
