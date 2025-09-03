@@ -22,17 +22,20 @@ const IndexPage = () => {
                             Named for Altair, a beacon star, and the sharp precision of
                             algorithms, <strong>Altairith Capital</strong> symbolizes
                             elevated insight and disciplined execution. <br /> <br />
-                            We act as a strategic, long-term holding structure in the
-                            realms of cybersecurity, Web3, and fintech innovation with
-                            clarity and resilience.
+                            <strong>Altairith Capital</strong> is a private holding
+                            company focused on turning operating profits into durable
+                            value. We allocate across two pillars: financial assets that
+                            compound and intellectual property that can be built, owned,
+                            and licensed. The mandate: long horizon, disciplined risk,
+                            clear execution.
                         </p>
                         <div className="industries-grid" role="list">
                             {[
-                                "Cybersecurity",
-                                "Blockchain",
                                 "Finance",
                                 "Intellectual Property",
-                                "Education",
+                                "Operating Companies",
+                                "Licensing & Commercialization",
+                                "Research & Development",
                                 "Philanthropy",
                             ].map((item) => (
                                 <div key={item} className="industry-item" role="listitem">
@@ -48,19 +51,23 @@ const IndexPage = () => {
                         <div>
                             <p>
                                 I'm Christian Vari, and I founded Altairith Capital with a
-                                clear vision: to bridge cutting-edge cybersecurity
-                                expertise with strategic capital stewardship.
+                                clear vision: to bridge cutting-edge expertise with
+                                strategic capital stewardship.
                             </p>
                             <p>
-                                As a seasoned security researcher and inventor, the
-                                founder of Codezen, a cybersecurity firm focused on
-                                blockchain and DeFi, I’ve experienced how innovation
-                                demands disciplined execution.
+                                Altairith Capital is how I compound the outcomes of the
+                                companies I build, channeling profits into assets and
+                                ideas that last.
                             </p>
                             <p>
-                                At Altairith Capital, we channel that expertise into
-                                strategic capital stewardship, safeguarding and
-                                compounding both technological and financial assets.
+                                I’m a security researcher, inventor, and founder of
+                                Codezen. Building taught me that innovation matters, but
+                                discipline wins.
+                            </p>
+                            <p>
+                                That’s the playbook here: invest in resilient financial
+                                assets and create intellectual property that can be
+                                licensed, scaled, and endure.
                             </p>
                         </div>
                         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -84,10 +91,9 @@ const IndexPage = () => {
                 <Section id="mission" title="Mission" eyebrow="our">
                     <div className="two-col">
                         <p>
-                            To steward capital with an ownership mindset, blending
-                            cybersecurity insight and operational rigor to cultivate
-                            sustainable value across Web3, financial services, and
-                            emerging technologies.
+                            Turn operating profits into compounding assets, finance we own
+                            and intellectual property we build, through disciplined,
+                            long-term allocation.
                         </p>
                         <div className="industries-grid" role="list">
                             {[
@@ -164,7 +170,8 @@ const IndexPage = () => {
 
                 <footer className="footer">
                     <div className="container">
-                        © {new Date().getFullYear()} {title} • All rights reserved
+                        © {new Date().getFullYear()} {title} • All rights reserved •
+                        Altairith Capital Holding S.r.l.
                     </div>
                 </footer>
             </main>

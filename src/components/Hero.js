@@ -15,10 +15,10 @@ const Hero = () => {
                     Build to <span className="accent-gold">Endure</span>.
                 </h1>
                 <p className="hero-subtitle">
-                    {title} is a long-horizon holding company merging cybersecurity,
-                    blockchain, and fintech expertise. Founded by Christian Vari, we bring
-                    algorithmic discipline and strategic vision to manage and grow both
-                    financial and intellectual capital with resilience and precision.
+                    {title} is a private long-horizon holding company. We turn operating
+                    profits into durable value-owning financial assets and creating
+                    licensable intellectual property with disciplined, long-term
+                    allocation.
                 </p>
                 <div className="cta-row">
                     <a href="#about" className="btn btn-primary">

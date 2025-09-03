@@ -22,6 +22,7 @@ const SEO = ({
         "@context": "https://schema.org",
         "@type": "Organization",
         name: metadata.title,
+        legalName: metadata.legalName,
         url: metadata.siteUrl,
         logo: `${metadata.siteUrl.replace(/\/$/, "")}/static/logo.svg`,
         description: metadata.description,
@@ -43,10 +44,20 @@ const SEO = ({
         },
         address: {
             "@type": "PostalAddress",
-            addressCountry: "US",
+            addressCountry: "IT",
+            streetAddress: undefined,
+            addressLocality: undefined,
+            postalCode: undefined,
+            addressRegion: undefined,
         },
         industry: "Investment Management",
-        specialty: ["Cybersecurity", "Web3", "Fintech", "Blockchain Security"],
+        specialty: [
+            "Financial Assets",
+            "Intellectual Property",
+            "IP Licensing",
+            "Capital Allocation",
+            "Long-Horizon Investing",
+        ],
     };
 
     return (
@@ -91,8 +102,8 @@ const SEO = ({
             {twitterSite ? <meta name="twitter:site" content={twitterSite} /> : null}
 
             {/* Misc */}
-            <meta name="geo.region" content="US" />
-            <meta name="geo.placename" content="United States" />
+            <meta name="geo.region" content="IT" />
+            <meta name="geo.placename" content="Italy" />
             <meta name="distribution" content="global" />
             <meta name="rating" content="general" />
             <meta name="revisit-after" content="7 days" />

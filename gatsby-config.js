@@ -7,15 +7,16 @@ require(`dotenv`).config({ path: `.env` });
 module.exports = {
     siteMetadata: {
         title: `Altairith Capital`,
-        description: `Long-horizon holding company specializing in cybersecurity, web3, and fintech investments. Founded by Christian Vari, security researcher and inventor.`,
+        description: `Private long-horizon holding company. We turn operating profits into durable value by allocating into financial assets and building licensable intellectual property. Founded by security researcher and inventor Christian Vari.`,
         siteUrl: `https://www.altairith.capital`,
         author: `Christian Vari`,
-        keywords: `Altairith Capital, Christian Vari, Codezen, holding company, web3 security, fintech capital, blockchain security, strategic holding company, patent inventor, security research`,
+        keywords: `Altairith Capital, Altairith Capital Holding S.r.l., Christian Vari, private holding company, long-horizon investing, financial assets, intellectual property, IP licensing, capital allocation, disciplined investing, Codezen`,
         image: `https://www.altairith.capital/static/altairith-og-image.jpg`,
         twitterUsername: `@christianvari_`,
         companyTwitter: `@altairithcapital`,
         contactEmail: `info@altairith.capital`,
         contactAddress: `Via Traiana 10, 00037 Segni (RM), Italy`,
+        legalName: `Altairith Capital Holding S.r.l.`,
     },
     plugins: [
         // "gatsby-plugin-google-gtag",
