@@ -17,6 +17,24 @@
     --font-display: "Michroma", system-ui, sans-serif;
     --font-body: "Archivo", system-ui, sans-serif;
 
+    /* Type scale: the only sizes used on the site */
+    --fs-label: 11px; /* uppercase tracked labels, nav, buttons */
+    --fs-sm: 14px; /* secondary text */
+    --fs-body: clamp(16px, 1.25vw, 18px); /* paragraphs */
+    --fs-md: clamp(18px, 1.6vw, 22px); /* item titles */
+    --fs-lead: clamp(22px, 2.4vw, 32px); /* intro paragraphs */
+    --fs-xl: clamp(28px, 3.8vw, 52px); /* mission statement */
+    --fs-display: clamp(24px, 3.4vw, 48px); /* Michroma headings */
+
+    --ls-wide: 0.3em; /* eyebrows, nav, buttons */
+    --ls: 0.18em; /* other uppercase labels */
+
+    --lh-tight: 1.15;
+    --lh-snug: 1.35;
+    --lh-body: 1.7;
+
+    --header-h: 64px;
+
     --gutter: clamp(20px, 4vw, 56px);
     --section-y: clamp(96px, 14vw, 180px);
     --max: 1280px;
@@ -32,7 +50,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: var(--header-h);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -60,6 +78,8 @@ body {
 body {
     font-family: var(--font-body);
     font-weight: 300;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     min-height: 100vh;
 }
 
@@ -121,8 +141,8 @@ h3 {
     padding: 12px 18px;
     background: var(--gold);
     color: var(--navy-800);
-    font: 500 11px/1 var(--font-body);
-    letter-spacing: 0.28em;
+    font: 500 var(--fs-label) / 1 var(--font-body);
+    letter-spacing: var(--ls-wide);
     text-transform: uppercase;
 }
 .skip-link:focus {
@@ -134,16 +154,17 @@ h3 {
 .label {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font-size: var(--fs-label);
+    line-height: 1.4;
+    letter-spacing: var(--ls);
     text-transform: uppercase;
 }
 
 .num {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    font-size: var(--fs-label);
+    letter-spacing: var(--ls);
     color: var(--gold);
 }
 
@@ -153,8 +174,9 @@ h3 {
     gap: 16px;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.4em;
+    font-size: var(--fs-label);
+    line-height: 1.4;
+    letter-spacing: var(--ls-wide);
     text-transform: uppercase;
     color: var(--gold);
 }
@@ -173,8 +195,9 @@ h3 {
 .display {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(24px, 4.6vw, 64px);
-    line-height: 1;
+    font-size: var(--fs-display);
+    line-height: var(--lh-tight);
+    letter-spacing: 0.01em;
     text-transform: uppercase;
 }
 
@@ -186,8 +209,9 @@ h3 {
     padding: 16px 26px;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.28em;
+    font-size: var(--fs-label);
+    line-height: 1;
+    letter-spacing: var(--ls-wide);
     text-transform: uppercase;
     border: 1px solid rgb(244 242 238 / 0.3);
     background: none;
@@ -213,6 +237,10 @@ h3 {
 .section {
     padding: var(--section-y) var(--gutter);
     position: relative;
+}
+/* In-page anchors land on the section heading, not on its top padding. */
+.section[id] {
+    scroll-margin-top: calc(40px - var(--section-y));
 }
 .wrap {
     max-width: var(--max);

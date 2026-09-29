@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import emblem from "../assets/emblem-light.png";
 import { group, nn } from "../data/site";
 
 // Orbit diagram satellites (viewBox 0–100 coordinates, holding at 46,56).
@@ -140,7 +142,7 @@ const codezen = group.companies[0];
             </svg>
             <div class="orbit__glow gp"></div>
             <div class="orbit__core gp">
-                <img src="/assets/emblem-light.png" alt="" width="600" height="667" loading="lazy" />
+                <Image src={emblem} alt="" width={240} />
                 <span class="label">Holding</span>
             </div>
             <a
@@ -209,14 +211,8 @@ const codezen = group.companies[0];
         flex-direction: column;
         gap: 28px;
     }
-    .grp__text .display {
-        font-size: clamp(24px, 3.4vw, 48px);
-        line-height: 1.05;
-    }
     .grp__intro {
         max-width: 460px;
-        font-size: clamp(17px, 1.4vw, 19px);
-        line-height: 1.7;
         color: var(--mist);
     }
     .grp__list {
@@ -243,12 +239,14 @@ const codezen = group.companies[0];
     }
     .grp__name {
         font-weight: 500;
-        font-size: 16px;
-        letter-spacing: 0.12em;
+        font-size: var(--fs-body);
+        line-height: 1.3;
+        letter-spacing: var(--ls);
         text-transform: uppercase;
     }
     .grp__desc {
-        font-size: 15px;
+        font-size: var(--fs-sm);
+        line-height: 1.5;
         color: var(--haze);
     }
     a.grp__row:hover .grp__desc,
@@ -256,7 +254,6 @@ const codezen = group.companies[0];
         color: inherit;
     }
     .grp__domain {
-        letter-spacing: 0.2em;
         color: var(--mist);
     }
 
@@ -311,7 +308,7 @@ const codezen = group.companies[0];
         height: auto;
     }
     .orbit__core .label {
-        letter-spacing: 0.3em;
+        letter-spacing: var(--ls-wide);
         color: var(--gold);
         white-space: nowrap;
     }
@@ -360,18 +357,14 @@ const codezen = group.companies[0];
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
         white-space: nowrap;
         font-weight: 500;
+        font-size: var(--fs-label);
+        letter-spacing: var(--ls);
         text-transform: uppercase;
     }
-    .orbit__name {
-        font-size: 12px;
-        letter-spacing: 0.18em;
-    }
     .orbit__sub {
-        font-size: 10px;
-        letter-spacing: 0.22em;
         color: var(--haze);
     }
 </style>

@@ -1,6 +1,6 @@
 // Hero canvas: the Altairith emblem assembles from a star field into the Aquila
 // constellation, with Altair flaring at the eagle's eye. Ported from the v2 design
-// ("assemble" variant, full motion, constellation + labels on).
+// ("assemble" variant, constellation + labels on; no pointer parallax).
 
 type Pt = {
     u: number;
@@ -97,27 +97,14 @@ export function initHero(canvas: HTMLCanvasElement, src: string) {
             ph: rnd() * 6.28, sp: 0.4 + rnd() * 1.5,
         }));
 
-        const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
-        addEventListener(
-            "pointermove",
-            (e) => {
-                mouse.tx = e.clientX / innerWidth - 0.5;
-                mouse.ty = e.clientY / innerHeight - 0.5;
-            },
-            { passive: true },
-        );
-
         const draw = (t: number) => {
             const mo = motion();
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            mouse.x += (mouse.tx - mouse.x) * 0.05;
-            mouse.y += (mouse.ty - mouse.y) * 0.05;
-            const par = mo === "full" ? 24 : 0;
             const wide = W > 900;
             const eh = wide ? Math.min(H * 0.7, (W * 0.5) / aspect) : Math.min(H * 0.34, (W * 0.62) / aspect);
             const ew = eh * aspect;
-            const cx = (wide ? W * 0.7 : W * 0.5) - mouse.x * par;
-            const cy = (wide ? H * 0.5 : Math.max(H * 0.28, 96 + eh / 2)) - mouse.y * par;
+            const cx = wide ? W * 0.7 : W * 0.5;
+            const cy = wide ? H * 0.5 : Math.max(H * 0.28, 96 + eh / 2);
             const x0 = cx - ew / 2, y0 = cy - eh / 2;
             const P = ([px, py]: [number, number]): [number, number] => [x0 + (px / EW) * ew, y0 + (py / EH) * eh];
 
@@ -134,8 +121,8 @@ export function initHero(canvas: HTMLCanvasElement, src: string) {
             // background star field
             const drift = mo === "off" ? 0 : t * 3;
             for (const p of field) {
-                const px = (((p.x * W - drift * p.z) % W) + W) % W - mouse.x * par * p.z * 1.4;
-                const py = p.y * H - mouse.y * par * p.z * 1.4;
+                const px = (((p.x * W - drift * p.z) % W) + W) % W;
+                const py = p.y * H;
                 const tw = mo === "off" ? 0.7 : 0.5 + 0.5 * Math.sin(t * p.sp + p.ph);
                 ctx.fillStyle = `rgba(214,224,255,${(0.15 + 0.55 * tw) * p.z * ease(t / 1.2 + p.z * 0.4)})`;
                 ctx.beginPath();

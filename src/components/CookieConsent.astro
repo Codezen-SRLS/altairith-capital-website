@@ -145,15 +145,15 @@ const trackerList = trackers.join(" and ");
         background: none;
         border: 0;
         color: var(--muted);
-        font: 300 22px/1 var(--font-body);
+        font: 300 24px/1 var(--font-body);
         cursor: pointer;
     }
     .cc__close:hover {
         color: var(--gold);
     }
     .cc__text {
-        font-size: 14px;
-        line-height: 1.65;
+        font-size: var(--fs-sm);
+        line-height: 1.6;
         color: var(--mist);
     }
     .cc__text a {
@@ -184,10 +184,10 @@ const trackerList = trackers.join(" and ");
     }
     .cc__row strong {
         font-weight: 500;
-        font-size: 14px;
+        font-size: var(--fs-sm);
     }
     .cc__row small {
-        font-size: 12px;
+        font-size: var(--fs-sm);
         color: var(--haze);
         line-height: 1.5;
     }
@@ -233,7 +233,7 @@ const trackerList = trackers.join(" and ");
     .cc__actions .btn {
         justify-content: center;
         padding: 14px 12px;
-        letter-spacing: 0.2em;
+        letter-spacing: var(--ls);
     }
     @media (max-width: 480px) {
         .cc {
@@ -243,18 +243,13 @@ const trackerList = trackers.join(" and ");
             padding: 22px 18px 18px;
             gap: 12px;
         }
-        .cc__text {
-            font-size: 13px;
-            line-height: 1.55;
-        }
         .cc__actions {
             grid-template-columns: repeat(3, 1fr);
             gap: 6px;
         }
         .cc__actions .btn {
-            padding: 13px 4px;
-            font-size: 10px;
-            letter-spacing: 0.12em;
+            padding: 14px 4px;
+            letter-spacing: 0.1em;
         }
     }
     .cc__actions .btn[hidden] {

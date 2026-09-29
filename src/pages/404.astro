@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import emblem from "../assets/emblem-light.png";
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Contact from "../components/Contact.astro";
@@ -9,10 +11,10 @@ import { site } from "../data/site";
     <Header base="/" />
     <main id="main">
         <section id="top" class="nf">
-            <img class="nf__mark" src="/assets/emblem-light.png" alt="" width="600" height="667" />
+            <Image class="nf__mark" src={emblem} alt="" width={600} />
             <div class="nf__copy">
                 <p class="eyebrow">Error 404</p>
-                <h1 class="nf__title">Off the <span>chart</span>.</h1>
+                <h1 class="display nf__title">Off the <span>chart</span>.</h1>
                 <p class="nf__text">
                     The page you’re looking for doesn’t exist, was moved, or is temporarily unavailable.
                 </p>
@@ -53,19 +55,11 @@ import { site } from "../data/site";
         gap: 28px;
         animation: rise 1s 0.2s both;
     }
-    .nf__title {
-        font-family: var(--font-display);
-        font-size: clamp(26px, 4vw, 56px);
-        line-height: 1.2;
-        text-transform: uppercase;
-    }
     .nf__title span {
         color: var(--gold);
     }
     .nf__text {
         max-width: 520px;
-        font-size: 17px;
-        line-height: 1.7;
         color: var(--mist);
     }
     .nf__ctas {

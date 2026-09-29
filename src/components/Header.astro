@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/logo-lockup-light.png";
 import { nav, nn, site } from "../data/site";
 
 interface Props {
@@ -11,7 +13,7 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
 
 <header class="hdr">
     <a href={base ? "/" : "#top"} class="hdr__logo" aria-label={`${site.title}, back to top`}>
-        <img src="/assets/logo-lockup-light.png" alt={site.title} width="534" height="144" />
+        <Image src={logo} alt={site.title} width={252} loading="eager" />
     </a>
     <nav class="hdr__nav" aria-label="Primary">
         {
@@ -36,7 +38,7 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
 
 <div id="mobile-menu" class="mm" hidden>
     <div class="mm__top">
-        <img src="/assets/logo-lockup-light.png" alt="" width="534" height="144" />
+        <Image src={logo} alt="" width={252} />
         <button class="mm__close" type="button" aria-label="Close menu" data-menu-close>×</button>
     </div>
     <nav class="mm__nav" aria-label="Mobile">
@@ -120,8 +122,8 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
         justify-content: flex-end;
         gap: clamp(14px, 2.4vw, 34px);
         font-weight: 500;
-        font-size: 11px;
-        letter-spacing: 0.28em;
+        font-size: var(--fs-label);
+        letter-spacing: var(--ls-wide);
         text-transform: uppercase;
         color: var(--mist);
     }
@@ -190,7 +192,7 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
         border: 0;
         cursor: pointer;
         color: var(--paper);
-        font: 300 26px/1 var(--font-body);
+        font: 300 24px/1 var(--font-body);
     }
     .mm__nav {
         display: flex;
@@ -205,9 +207,9 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
         padding: 20px 0;
         border-bottom: 1px solid var(--line-soft);
         font-family: var(--font-display);
-        font-size: 20px;
+        font-size: var(--fs-md);
         text-transform: uppercase;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.02em;
     }
     .mm__foot {
         margin-top: auto;
@@ -215,7 +217,7 @@ const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
         display: flex;
         flex-direction: column;
         gap: 6px;
-        font-size: 15px;
+        font-size: var(--fs-sm);
         color: var(--haze);
     }
     .mm__foot a {
