@@ -1,0 +1,17 @@
+# Altairith Capital
+
+> Private, long-horizon holding company. We build, invest in and hold companies, and reinvest their profits into financial assets and licensable intellectual property. Founded by security researcher and inventor Christian Vari.
+
+Altairith Capital (Altairith Capital Holding S.r.l.) is a private, long-horizon holding company whose group companies are active in areas including Artificial Intelligence, Cybersecurity, Web3 & Blockchain, Fintech. Founded in 2025 and chaired by Christian Vari. Tagline: "Lead from Above. Build to Endure."
+
+## Pages
+
+- [Home](https://www.altairith.capital/): About, Chairman, Mission, Group, Values, Contact
+- [Privacy & cookie policy](https://www.altairith.capital/privacy/)
+- [Full plain-text profile](https://www.altairith.capital/llms-full.txt): complete site content in Markdown
+
+## Contact
+
+- Email: info@altairith.capital
+- Address: Via Traiana 10, 00037 Segni (RM), Italy
+- LinkedIn: https://www.linkedin.com/company/altairith-capital
