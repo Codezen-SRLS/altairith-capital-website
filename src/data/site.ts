@@ -38,6 +38,7 @@ export const about = {
         "Finance",
         "Intellectual Property",
         "Operating Companies",
+        "Investments",
         "Licensing & Commercialization",
         "Research & Development",
         "Philanthropy",
