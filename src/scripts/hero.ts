@@ -88,7 +88,9 @@ export function initHero(canvas: HTMLCanvasElement, src: string) {
     function start(img: HTMLImageElement) {
         const { pts, aspect } = sample(img);
         const host = canvas.parentElement!;
-        let W = 0, H = 0, dpr = 1;
+        // On narrow screens the emblem sits in the free band above the hero copy.
+        const copy = host.parentElement?.querySelector<HTMLElement>(".hero__copy") ?? null;
+        let W = 0, H = 0, dpr = 1, bandTop = 0, bandBottom = 0;
 
         const rnd = lcg(5);
         const field = Array.from({ length: 380 }, () => ({
@@ -101,10 +103,13 @@ export function initHero(canvas: HTMLCanvasElement, src: string) {
             const mo = motion();
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             const wide = W > 900;
-            const eh = wide ? Math.min(H * 0.7, (W * 0.5) / aspect) : Math.min(H * 0.34, (W * 0.62) / aspect);
+            const band = bandBottom - bandTop;
+            const eh = wide
+                ? Math.min(H * 0.7, (W * 0.5) / aspect)
+                : Math.min(band > 0 ? band : H * 0.34, H * 0.42, (W * 0.62) / aspect);
             const ew = eh * aspect;
             const cx = wide ? W * 0.7 : W * 0.5;
-            const cy = wide ? H * 0.5 : Math.max(H * 0.28, 96 + eh / 2);
+            const cy = wide ? H * 0.5 : band > 0 ? bandTop + band / 2 : Math.max(H * 0.28, 96 + eh / 2);
             const x0 = cx - ew / 2, y0 = cy - eh / 2;
             const P = ([px, py]: [number, number]): [number, number] => [x0 + (px / EW) * ew, y0 + (py / EH) * eh];
 
@@ -264,10 +269,18 @@ export function initHero(canvas: HTMLCanvasElement, src: string) {
             H = r.height;
             canvas.width = Math.round(W * dpr);
             canvas.height = Math.round(H * dpr);
+            if (copy) {
+                // leave room above for the header + "α AQL — ALTAIR" label, and a gap above the copy
+                bandTop = 116;
+                bandBottom = copy.getBoundingClientRect().top - r.top - 28;
+                if (bandBottom - bandTop < 140) bandTop = bandBottom = 0;
+            }
             if (!raf) draw(motion() === "off" ? 12 : (performance.now() - t0) / 1000);
         };
 
-        new ResizeObserver(resize).observe(host);
+        const ro = new ResizeObserver(resize);
+        ro.observe(host);
+        if (copy) ro.observe(copy);
         new IntersectionObserver(([e]) => {
             visible = e.isIntersecting;
             kick();

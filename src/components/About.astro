@@ -16,6 +16,9 @@ const [bodyBefore, bodyAfter] = about.body.split(site.title);
         <div class="about__body">
             <p class="about__lead">{leadBefore}<strong>{site.title}</strong>{leadAfter}</p>
             <p>{bodyBefore}<strong class="bright">{site.title}</strong>{bodyAfter}</p>
+            <ul class="about__sectors label" aria-label="Sectors include">
+                {about.sectors.map((s) => <li>{s}</li>)}
+            </ul>
         </div>
     </div>
     <ul class="wrap about__areas" aria-label="Areas of activity">
@@ -68,6 +71,19 @@ const [bodyBefore, bodyAfter] = about.body.split(site.title);
     }
     strong {
         font-weight: 500;
+    }
+    .about__sectors {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--gold);
+    }
+    .about__sectors li {
+        padding: 10px 14px;
+        border: 1px solid rgb(193 157 106 / 0.4);
     }
     .bright {
         color: var(--paper);

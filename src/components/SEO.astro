@@ -37,6 +37,7 @@ const jsonLd = {
             image: imageUrl,
             description: site.description,
             slogan: site.tagline,
+            foundingDate: site.foundingDate,
             email: `mailto:${site.email}`,
             address: {
                 "@type": "PostalAddress",
@@ -54,21 +55,27 @@ const jsonLd = {
                 availableLanguage: ["English", "Italian"],
             },
             founder: { "@id": personId },
-            knowsAbout: about.areas,
+            knowsAbout: [...about.sectors, ...about.areas],
             subOrganization: group.companies
                 .filter((c) => c.url)
-                .map((c) => ({ "@type": "Organization", name: c.name, url: c.url, description: c.desc })),
-            sameAs: [site.linkedin, twitterUrl(site.twitter)],
+                .map((c) => ({
+                    "@type": "Organization",
+                    name: c.name,
+                    url: c.url,
+                    description: c.desc,
+                    founder: { "@id": personId },
+                })),
+            sameAs: [site.linkedin],
         },
         {
             "@type": "Person",
             "@id": personId,
             name: chairman.name,
             jobTitle: chairman.role,
-            description: "Security researcher, inventor, and founder of Codezen.",
+            description: "Security researcher, inventor, and founder of Altairith Capital and Codezen.",
             image: new URL("/og/christian-vari.jpg", site.url).href,
             worksFor: { "@id": orgId },
-            sameAs: [twitterUrl(site.authorTwitter), "https://codezen.tech"],
+            sameAs: [twitterUrl(site.authorTwitter)],
         },
         {
             "@type": "WebSite",
@@ -120,13 +127,10 @@ const jsonLd = {
 <meta property="og:locale" content="en_US" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content={site.twitter} />
 <meta name="twitter:creator" content={site.authorTwitter} />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
 
-<meta name="geo.region" content="IT-RM" />
-<meta name="geo.placename" content={site.address.locality} />
 
 {structuredData && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

@@ -2,9 +2,10 @@ export const site = {
     title: "Altairith Capital",
     tagline: "Lead from Above. Build to Endure.",
     description:
-        "Private long-horizon holding company. We turn operating profits into durable value by allocating into financial assets and building licensable intellectual property. Founded by security researcher and inventor Christian Vari.",
+        "Private, long-horizon holding company. We build and hold operating companies and reinvest their profits into financial assets and licensable intellectual property. Founded by security researcher and inventor Christian Vari.",
     url: "https://www.altairith.capital",
     legalName: "Altairith Capital Holding S.r.l.",
+    foundingDate: "2025",
     author: "Christian Vari",
     email: "info@altairith.capital",
     address: {
@@ -15,22 +16,24 @@ export const site = {
         country: "IT",
         full: "Via Traiana 10, 00037 Segni (RM), Italy",
     },
-    twitter: "@altairithcapital",
     authorTwitter: "@christianvari_",
     linkedin: "https://www.linkedin.com/company/altairith-capital",
+    linkedinLabel: "Altairith Capital Holding",
     ogImage: "/altairith-og-image.jpg",
     logo: "/icon-512.png",
 };
 
 export const hero = {
     lines: ["Lead from Above.", "Build to Endure."],
-    intro: "Altairith Capital is a private long-horizon holding company. We turn operating profits into durable value-owning financial assets and creating licensable intellectual property with disciplined, long-term allocation.",
+    intro: "Altairith Capital is a private, long-horizon holding company. We build and hold operating companies, then reinvest their profits into financial assets and intellectual property we own and license.",
     meta: ["Aquila · The Eagle", "α Aql · Altair", "RA 19h 50m 47s · Dec +08° 52′"],
 };
 
 export const about = {
     lead: "Named for Altair, a beacon star, and the sharp precision of algorithms, Altairith Capital symbolizes elevated insight and disciplined execution.",
-    body: "Altairith Capital is a private holding company focused on turning operating profits into durable value. We allocate across two pillars: financial assets that compound and intellectual property that can be built, owned, and licensed. The mandate: long horizon, disciplined risk, clear execution.",
+    body: "Altairith Capital is the holding company behind the businesses founded by Christian Vari, starting with Codezen. Their operating profits are allocated across two pillars: financial assets that compound, and intellectual property that can be built, owned and licensed. The mandate: long horizon, disciplined risk, clear execution.",
+    /** Sectors the group is active in (not exhaustive). */
+    sectors: ["Artificial Intelligence", "Cybersecurity", "Web3 & Blockchain", "Fintech"],
     areas: [
         "Finance",
         "Intellectual Property",
@@ -47,7 +50,7 @@ export const chairman = {
     lead: "I'm Christian Vari, and I founded Altairith Capital with a clear vision: to bridge cutting-edge expertise with strategic capital stewardship.",
     body: [
         "Altairith Capital is how I compound the outcomes of the companies I build, channeling profits into assets and ideas that last.",
-        "I’m a security researcher, inventor, and founder of Codezen. Building taught me that innovation matters, but discipline wins.",
+        "I’m a security researcher, inventor, and founder of Codezen, a smart contract security firm. Building taught me that innovation matters, but discipline wins.",
         "That’s the playbook here: invest in resilient financial assets and create intellectual property that can be licensed, scaled, and endure.",
     ],
 };
@@ -61,13 +64,13 @@ export const mission = {
 
 export const group = {
     title: "The Constellation",
-    intro: "Altairith Capital sits at the center. Around it, the companies Christian Vari builds, each one an operating business whose profits flow back into the holding.",
+    intro: "Altairith Capital sits at the center. Around it are the operating companies Christian Vari builds; their profits flow back into the holding.",
     companies: [
         {
             name: "Codezen",
             domain: "codezen.tech",
             url: "https://codezen.tech",
-            desc: "Software engineering, blockchain and security. Founded by Christian Vari.",
+            desc: "Smart contract security audits and blockchain consulting for EVM, Solana and Cosmos.",
         },
         { name: "Stealth", domain: "Undisclosed", url: null, desc: "In stealth." },
         { name: "Stealth", domain: "Undisclosed", url: null, desc: "In stealth." },

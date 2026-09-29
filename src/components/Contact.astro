@@ -31,8 +31,14 @@ const year = new Date().getFullYear();
                         </div>
                         <div class="contact__item">
                             <h3 class="label">Email</h3>
-                            <a class="contact__mail" href={`mailto:${site.email}`}>
+                            <a class="contact__link" href={`mailto:${site.email}`}>
                                 {site.email}
+                            </a>
+                        </div>
+                        <div class="contact__item">
+                            <h3 class="label">LinkedIn</h3>
+                            <a class="contact__link" href={site.linkedin} target="_blank" rel="noopener me">
+                                {site.linkedinLabel} <span aria-hidden="true">↗</span>
                             </a>
                         </div>
                     </address>
@@ -43,7 +49,7 @@ const year = new Date().getFullYear();
             <a href="/" aria-label={`${site.title} home`}>
                 <Image src={logo} alt={site.title} width={252} />
             </a>
-            <span>© {year} {site.title} • All rights reserved • {site.legalName}</span>
+            <span>© {year} {site.legalName} · All rights reserved</span>
             <span class="foot__links">
                 <a href="/privacy/">Privacy</a>
                 <button type="button" class="foot__btn" data-cookie-settings hidden>Cookie settings</button>
@@ -89,8 +95,8 @@ const year = new Date().getFullYear();
     .contact__grid {
         font-style: normal;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-        gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: 32px 40px;
         border-top: 1px solid var(--line);
         padding-top: 32px;
     }
@@ -102,7 +108,7 @@ const year = new Date().getFullYear();
     .contact__item h3 {
         color: var(--muted);
     }
-    .contact__mail {
+    .contact__link {
         border-bottom: 1px solid var(--gold);
         align-self: flex-start;
         padding-bottom: 2px;

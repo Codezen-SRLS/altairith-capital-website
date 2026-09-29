@@ -138,4 +138,19 @@ import { hero, site } from "../data/site";
         flex-wrap: wrap;
         gap: 24px;
     }
+    @media (max-width: 600px) {
+        /* reserve the band above the copy for the emblem (see scripts/hero.ts) */
+        .hero {
+            padding-top: calc(144px + 50vw);
+        }
+        .hero__copy {
+            gap: 22px;
+        }
+        .hero__meta {
+            margin-top: 40px;
+        }
+        .hero__coords {
+            display: none;
+        }
+    }
 </style>

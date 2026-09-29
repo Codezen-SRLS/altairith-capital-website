@@ -6,7 +6,7 @@ export function llmsIndex() {
 
 > ${site.description}
 
-${site.title} (${site.legalName}) is a private, long-horizon holding company based in Italy, founded and chaired by ${chairman.name}. Tagline: "${site.tagline}"
+${site.title} (${site.legalName}) is a private, long-horizon holding company whose group companies are active in areas including ${about.sectors.join(", ")}. Founded in ${site.foundingDate} and chaired by ${chairman.name}. Tagline: "${site.tagline}"
 
 ## Pages
 
@@ -18,6 +18,7 @@ ${site.title} (${site.legalName}) is a private, long-horizon holding company bas
 
 - Email: ${site.email}
 - Address: ${site.address.full}
+- LinkedIn: ${site.linkedin}
 `;
 }
 
@@ -30,6 +31,8 @@ export function llmsFull() {
 
 - Legal name: ${site.legalName}
 - Website: ${site.url}
+- Founded: ${site.foundingDate}, privately held
+- Sectors include: ${about.sectors.join(", ")}
 - Founder & Chairman: ${chairman.name}
 - Email: ${site.email}
 - Address: ${site.address.full}
@@ -46,6 +49,10 @@ ${hero.intro}
 ${about.lead}
 
 ${about.body}
+
+### Sectors (including)
+
+${list(about.sectors)}
 
 ### Areas of activity
 
