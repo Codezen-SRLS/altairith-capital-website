@@ -1,0 +1,227 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo-lockup-light.png";
+import { nav, nn, site } from "../data/site";
+
+interface Props {
+    /** Prefix for in-page anchors, e.g. "/" on secondary pages. */
+    base?: string;
+}
+const { base = "" } = Astro.props;
+const links = nav.map((l) => ({ ...l, href: `${base}${l.href}` }));
+---
+
+<header class="hdr">
+    <a href={base ? "/" : "#top"} class="hdr__logo" aria-label={`${site.title}, back to top`}>
+        <Image src={logo} alt={site.title} width={252} loading="eager" />
+    </a>
+    <nav class="hdr__nav" aria-label="Primary">
+        {
+            links.map((l) => (
+                <a href={l.href} class:list={{ "is-accent": l.label === "Contact" }}>
+                    {l.label}
+                </a>
+            ))
+        }
+    </nav>
+    <button
+        class="hdr__burger"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        data-menu-open
+    >
+        <span></span><span></span>
+    </button>
+</header>
+
+<div id="mobile-menu" class="mm" hidden>
+    <div class="mm__top">
+        <Image src={logo} alt="" width={252} />
+        <button class="mm__close" type="button" aria-label="Close menu" data-menu-close>×</button>
+    </div>
+    <nav class="mm__nav" aria-label="Mobile">
+        {
+            links.map((l, i) => (
+                <a href={l.href} class:list={{ "is-accent": l.label === "Contact" }} data-menu-close>
+                    <span>{l.label}</span>
+                    <span class="num">{nn(i)}</span>
+                </a>
+            ))
+        }
+    </nav>
+    <div class="mm__foot">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href={site.linkedin} target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        <span>{site.address.full}</span>
+    </div>
+</div>
+
+<script>
+    const hdr = document.querySelector<HTMLElement>(".hdr");
+    if (hdr) {
+        const onScroll = () => hdr.classList.toggle("is-solid", scrollY > 40);
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+    }
+
+    const menu = document.getElementById("mobile-menu");
+    const opener = document.querySelector<HTMLButtonElement>("[data-menu-open]");
+    if (menu && opener) {
+        const setOpen = (open: boolean) => {
+            menu.hidden = !open;
+            opener.setAttribute("aria-expanded", String(open));
+            document.documentElement.style.overflow = open ? "hidden" : "";
+            if (open) menu.querySelector<HTMLElement>("[data-menu-close]")?.focus();
+            else opener.focus({ preventScroll: true });
+        };
+        opener.addEventListener("click", () => setOpen(true));
+        menu.addEventListener("click", (e) => {
+            if ((e.target as HTMLElement).closest("[data-menu-close]")) setOpen(false);
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !menu.hidden) setOpen(false);
+        });
+        matchMedia("(min-width: 820px)").addEventListener("change", (e) => {
+            if (e.matches && !menu.hidden) setOpen(false);
+        });
+    }
+</script>
+
+<style>
+    .hdr {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 20px var(--gutter);
+        background: linear-gradient(#000b33f0, #000b3300);
+        transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hdr.is-solid {
+        background-color: #000b33f2;
+        box-shadow: 0 1px 0 var(--line-soft);
+        padding-block: 14px;
+    }
+    @supports (backdrop-filter: blur(1px)) {
+        .hdr.is-solid {
+            background-color: #000b33d9;
+            backdrop-filter: blur(12px);
+        }
+    }
+    .hdr__logo img {
+        height: 34px;
+        width: auto;
+    }
+    .hdr__nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: clamp(14px, 2.4vw, 34px);
+        font-weight: 500;
+        font-size: var(--fs-label);
+        letter-spacing: var(--ls-wide);
+        text-transform: uppercase;
+        color: var(--mist);
+    }
+    .is-accent {
+        color: var(--gold);
+    }
+    .hdr__burger {
+        display: none;
+        width: 44px;
+        height: 44px;
+        margin-right: -10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+    .hdr__burger span {
+        width: 22px;
+        height: 1px;
+        background: var(--paper);
+    }
+    .hdr__burger span + span {
+        background: var(--gold);
+    }
+    @media (max-width: 819px) {
+        .hdr__nav {
+            display: none;
+        }
+        .hdr__burger {
+            display: flex;
+        }
+    }
+
+    .mm {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        background: var(--navy-950);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px 32px;
+        overflow-y: auto;
+        animation: fade 0.25s ease both;
+    }
+    .mm[hidden] {
+        display: none;
+    }
+    .mm__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .mm__top img {
+        height: 30px;
+        width: auto;
+    }
+    .mm__close {
+        width: 44px;
+        height: 44px;
+        margin-right: -10px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        color: var(--paper);
+        font: 300 24px/1 var(--font-body);
+    }
+    .mm__nav {
+        display: flex;
+        flex-direction: column;
+        margin-top: 48px;
+        border-top: 1px solid var(--line-soft);
+    }
+    .mm__nav a {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line-soft);
+        font-family: var(--font-display);
+        font-size: var(--fs-md);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+    .mm__foot {
+        margin-top: auto;
+        padding-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: var(--fs-sm);
+        color: var(--haze);
+    }
+    .mm__foot a {
+        color: var(--paper);
+    }
+</style>

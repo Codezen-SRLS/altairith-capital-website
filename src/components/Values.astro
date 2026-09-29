@@ -1,0 +1,63 @@
+---
+import { values, nn } from "../data/site";
+---
+
+<section id="values" class="section on-paper" aria-labelledby="values-title">
+    <div class="wrap vals">
+        <div class="vals__head">
+            <p class="eyebrow">05 · Our Values</p>
+            <h2 id="values-title" class="display">Values</h2>
+        </div>
+        <ul class="vals__grid">
+            {
+                values.map((v, i) => (
+                    <li>
+                        <span class="num">{nn(i)}</span>
+                        <h3>{v.title}</h3>
+                        <p>{v.body}</p>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>
+
+<style>
+    .vals {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(48px, 6vw, 80px);
+    }
+    .vals__head {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .vals__grid {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: clamp(32px, 3vw, 48px);
+    }
+    li {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding-top: 24px;
+        border-top: 2px solid var(--navy-800);
+    }
+    .num {
+        color: var(--gold-ink);
+    }
+    h3 {
+        font-family: var(--font-body);
+        font-weight: 500;
+        font-size: var(--fs-md);
+        line-height: 1.2;
+    }
+    li p {
+        color: var(--ink);
+    }
+</style>

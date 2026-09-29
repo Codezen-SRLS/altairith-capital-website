@@ -1,0 +1,116 @@
+---
+import { about, nn, site } from "../data/site";
+const [leadBefore, leadAfter] = about.lead.split(site.title);
+const [bodyBefore, bodyAfter] = about.body.split(site.title);
+---
+
+<section id="about" class="section about" aria-labelledby="about-title">
+    <div class="wrap about__grid">
+        <div class="about__head">
+            <p class="eyebrow">01 · About</p>
+            <h2 id="about-title" class="display">Altairith</h2>
+            <p class="about__etym label">
+                <span>Altair</span><span class="about__dash" aria-hidden="true"></span><span>Algorithm</span>
+            </p>
+        </div>
+        <div class="about__body">
+            <p class="about__lead">{leadBefore}<strong>{site.title}</strong>{leadAfter}</p>
+            <p>{bodyBefore}<strong class="bright">{site.title}</strong>{bodyAfter}</p>
+            <ul class="about__sectors label" aria-label="Sectors include">
+                {about.sectors.map((s) => <li>{s}</li>)}
+            </ul>
+        </div>
+    </div>
+    <ul class="wrap about__areas" aria-label="Areas of activity">
+        {
+            about.areas.map((name, i) => (
+                <li>
+                    <span class="about__area">{name}</span>
+                    <span class="num">{nn(i)}</span>
+                </li>
+            ))
+        }
+    </ul>
+</section>
+
+<style>
+    .about {
+        border-top: 1px solid var(--line-soft);
+    }
+    .about__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+        gap: clamp(40px, 6vw, 96px);
+    }
+    .about__head {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+    .about__etym {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+    }
+    .about__dash {
+        width: 24px;
+        height: 1px;
+        background: var(--gold);
+    }
+    .about__body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        color: var(--mist);
+    }
+    .about__lead {
+        font-size: var(--fs-lead);
+        line-height: var(--lh-snug);
+        color: var(--paper);
+    }
+    strong {
+        font-weight: 500;
+    }
+    .about__sectors {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--gold);
+    }
+    .about__sectors li {
+        padding: 10px 14px;
+        border: 1px solid rgb(193 157 106 / 0.4);
+    }
+    .bright {
+        color: var(--paper);
+    }
+    .about__areas {
+        list-style: none;
+        padding: 0;
+        margin-top: clamp(64px, 8vw, 112px);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        column-gap: clamp(24px, 3vw, 48px);
+        border-top: 1px solid var(--line);
+    }
+    .about__areas li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        padding: 26px 4px 26px 0;
+        border-bottom: 1px solid var(--line);
+        transition: color 0.2s ease;
+    }
+    .about__areas li:hover {
+        color: var(--gold);
+    }
+    .about__area {
+        font-size: var(--fs-md);
+        line-height: 1.3;
+    }
+</style>

@@ -7,12 +7,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Gatsby
-.cache/
-**/.cache/
-public/
-**/public/
-.cache-loader/
+# Astro
+dist/
+.astro/
 
 # Environment files
 .env
@@ -38,8 +35,5 @@ coverage/
 .vercel/
 .netlify/
 .next/
-
-# Temporary scaffolding directory (from starter setup)
-tmp-gatsby/
 
 

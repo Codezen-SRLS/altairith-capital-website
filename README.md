@@ -1,49 +1,40 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# Altairith Capital: website
 
-## 🚀 Quick start
+Static site for [altairith.capital](https://www.altairith.capital), built with [Astro](https://astro.build) and deployed to GitHub Pages.
 
-1.  **Create a Gatsby site.**
+## Development
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+```sh
+npm ci
+npm run dev       # http://localhost:4321
+npm run check     # type-check .astro/.ts
+npm run build     # outputs ./dist
+npm run preview   # serve ./dist
+```
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+Requires Node ≥ 22.12.
 
-2.  **Start developing.**
+## Structure
 
-    Navigate into your new site’s directory and start it up.
+- `src/data/site.ts`: all copy and company metadata (the single source of truth for the page, JSON-LD and `llms*.txt`)
+- `src/components/`: page sections (Hero, About, Chairman, Mission, Group, Values, Contact), `SEO`, `Analytics`, `CookieConsent`
+- `src/scripts/hero.ts`: hero canvas animation (respects `prefers-reduced-motion`, pauses offscreen)
+- `src/pages/`: `/`, `/privacy/`, `404`, plus `/llms.txt` and `/llms-full.txt` generated from `site.ts`
+- `public/`: static assets, `robots.txt`, favicons, web manifest
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## Analytics & consent
 
-3.  **Open the code and start customizing!**
+Trackers are configured at build time and emitted only when their ID is set:
 
-    Your site is now running at http://localhost:8000!
+| Variable            | GitHub secret    | Notes                                          |
+| ------------------- | ---------------- | ---------------------------------------------- |
+| `PUBLIC_CLARITY_ID` | `CLARITY_ID`     | Microsoft Clarity, injected only after consent |
+| `PUBLIC_GA_ID`      | `GA_TRACKING_ID` | GA4 with Consent Mode v2 (default: denied)     |
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+To enable GA4, add the `GA_TRACKING_ID` repository secret and uncomment the `PUBLIC_GA_ID` line in `.github/workflows/deploy.yml`.
 
-4.  **Learn more**
+The cookie banner (GDPR / Garante-compliant: Accept / Reject / Preferences with equal weight) stores the choice in `localStorage` (`altairith-consent-v1`) for 6 months. “Cookie settings” in the footer reopens it.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Deploy
 
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+`.github/workflows/deploy.yml` runs `check` + `build` on every PR and push. Pushes to `main` publish `./dist` to the `gh-pages` branch (CNAME `www.altairith.capital`).

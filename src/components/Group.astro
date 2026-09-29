@@ -1,0 +1,370 @@
+---
+import { Image } from "astro:assets";
+import emblem from "../assets/emblem-light.png";
+import { group, nn } from "../data/site";
+
+// Orbit diagram satellites (viewBox 0–100 coordinates, holding at 46,56).
+const flows = [
+    { x: 76, y: 23, op: 0.7, draw: 1.1, flow: 3.9 },
+    { x: 16, y: 36, op: 0.5, draw: 1.4, flow: 6.4 },
+    { x: 66, y: 86, op: 0.5, draw: 1.8, flow: 8.7 },
+];
+const twinkles = [
+    { cx: 88, cy: 64, r: 0.6, o: 0.4, d: 6.7, dl: 1.6 },
+    { cx: 24, cy: 80, r: 0.35, o: 0.35, d: 5.2, dl: 0.4 },
+    { cx: 30, cy: 14, r: 0.35, o: 0.35, d: 6.1, dl: 1.1 },
+    { cx: 92, cy: 36, r: 0.3, o: 0.3, d: 7.6, dl: 2 },
+    { cx: 8, cy: 62, r: 0.3, o: 0.3, d: 5.6, dl: 0.7 },
+];
+const stealth = [
+    { x: 16, y: 36, delay: 2.7 },
+    { x: 66, y: 86, delay: 3.1 },
+];
+const codezen = group.companies[0];
+---
+
+<section id="group" class="section grp" aria-labelledby="group-title">
+    <div class="wrap grp__grid">
+        <div class="grp__text">
+            <p class="eyebrow">04 · The Group</p>
+            <h2 id="group-title" class="display">{group.title}</h2>
+            <p class="grp__intro">{group.intro}</p>
+            <ul class="grp__list">
+                {
+                    group.companies.map((c, i) => {
+                        const inner = (
+                            <>
+                                <span class="num">{nn(i)}</span>
+                                <span class="grp__co">
+                                    <span class="grp__name">{c.name}</span>
+                                    <span class="grp__desc">{c.desc}</span>
+                                </span>
+                                <span class="grp__domain label">
+                                    {c.domain}
+                                    {c.url && <span aria-hidden="true"> ↗</span>}
+                                </span>
+                            </>
+                        );
+                        return (
+                            <li>
+                                {c.url ? (
+                                    <a class="grp__row" href={c.url} target="_blank" rel="noopener">
+                                        {inner}
+                                    </a>
+                                ) : (
+                                    <div class="grp__row">{inner}</div>
+                                )}
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </div>
+
+        <div class="orbit" id="group-orbit" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+                <circle
+                    class="gp spin"
+                    cx="46"
+                    cy="56"
+                    r="34"
+                    fill="none"
+                    stroke="#F4F2EE"
+                    stroke-opacity="0.14"
+                    stroke-width="0.2"
+                    stroke-dasharray="0.6 1.4"
+                    style="animation: gspin 300s linear infinite"></circle>
+                <circle
+                    class="gp spin"
+                    cx="46"
+                    cy="56"
+                    r="20"
+                    fill="none"
+                    stroke="#C19D6A"
+                    stroke-opacity="0.3"
+                    stroke-width="0.2"
+                    stroke-dasharray="1 3"
+                    style="animation: gspin 200s linear infinite reverse"></circle>
+                {
+                    flows.map((f) => (
+                        <>
+                            <line
+                                class="gp"
+                                x1="46"
+                                y1="56"
+                                x2={f.x}
+                                y2={f.y}
+                                pathLength="100"
+                                stroke="#C19D6A"
+                                stroke-opacity={f.op}
+                                stroke-width="0.25"
+                                stroke-dasharray="100"
+                                style={`animation: gdraw 2.4s ${f.draw}s cubic-bezier(.65,0,.35,1) both`}
+                            />
+                            <line
+                                class="gp"
+                                x1="46"
+                                y1="56"
+                                x2={f.x}
+                                y2={f.y}
+                                pathLength="100"
+                                stroke="#F4F2EE"
+                                stroke-width="0.35"
+                                stroke-linecap="round"
+                                stroke-dasharray="4 200"
+                                style={`animation: gflow 9s ${f.flow}s ease-in-out infinite both`}
+                            />
+                        </>
+                    ))
+                }
+                <line
+                    x1="46"
+                    y1="56"
+                    x2="88"
+                    y2="64"
+                    stroke="#F4F2EE"
+                    stroke-opacity="0.12"
+                    stroke-width="0.2"
+                    stroke-dasharray="0.8 1.2"></line>
+                {
+                    twinkles.map((s) => (
+                        <circle
+                            cx={s.cx}
+                            cy={s.cy}
+                            r={s.r}
+                            fill="#F4F2EE"
+                            fill-opacity={s.o}
+                            style={`animation: twinkle ${s.d}s ${s.dl}s ease-in-out infinite`}
+                        />
+                    ))
+                }
+                <circle cx="46" cy="56" r="11" fill="#1B4A9A" fill-opacity="0.18"></circle>
+            </svg>
+            <div class="orbit__glow gp"></div>
+            <div class="orbit__core gp">
+                <Image src={emblem} alt="" width={240} />
+                <span class="label">Holding</span>
+            </div>
+            <a
+                class="orbit__node gp"
+                href={codezen.url}
+                target="_blank"
+                rel="noopener"
+                tabindex="-1"
+                style="left: 76%; top: 23%; animation-delay: 2.3s"
+            >
+                <span class="orbit__disc orbit__disc--lit">
+                    <img src="/assets/codezen.svg" alt="" width="325" height="190" loading="lazy" />
+                </span>
+                <span class="orbit__cap">
+                    <span class="orbit__name">{codezen.name}</span>
+                    <span class="orbit__sub">{codezen.domain}</span>
+                </span>
+            </a>
+            {
+                stealth.map((s) => (
+                    <div class="orbit__node gp" style={`left: ${s.x}%; top: ${s.y}%; animation-delay: ${s.delay}s`}>
+                        <span class="orbit__disc">
+                            <span class="orbit__diamond" />
+                        </span>
+                        <span class="orbit__cap">
+                            <span class="orbit__name">Stealth</span>
+                            <span class="orbit__sub">Undisclosed</span>
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    const orbit = document.getElementById("group-orbit");
+    if (orbit) {
+        if ("IntersectionObserver" in window) {
+            const io = new IntersectionObserver(
+                (entries) => {
+                    if (entries.some((e) => e.isIntersecting)) {
+                        orbit.classList.add("is-playing");
+                        io.disconnect();
+                    }
+                },
+                { threshold: 0.35 },
+            );
+            io.observe(orbit);
+        } else orbit.classList.add("is-playing");
+    }
+</script>
+
+<style>
+    .grp {
+        overflow: hidden;
+    }
+    .grp__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+        gap: clamp(48px, 6vw, 96px);
+        align-items: center;
+    }
+    .grp__text {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+    .grp__intro {
+        max-width: 460px;
+        color: var(--mist);
+    }
+    .grp__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--line);
+    }
+    .grp__row {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        column-gap: 16px;
+        row-gap: 8px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+    }
+    .grp__co {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .grp__name {
+        font-weight: 500;
+        font-size: var(--fs-body);
+        line-height: 1.3;
+        letter-spacing: var(--ls);
+        text-transform: uppercase;
+    }
+    .grp__desc {
+        font-size: var(--fs-sm);
+        line-height: 1.5;
+        color: var(--haze);
+    }
+    a.grp__row:hover .grp__desc,
+    a.grp__row:hover .grp__domain {
+        color: inherit;
+    }
+    .grp__domain {
+        color: var(--mist);
+    }
+
+    /* ---- orbit diagram ---- */
+    .orbit {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 1;
+        justify-self: center;
+    }
+    .orbit svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+    .spin {
+        transform-box: view-box;
+        transform-origin: 46px 56px;
+    }
+    .orbit:not(.is-playing) .gp {
+        animation-play-state: paused !important;
+    }
+    .orbit__glow {
+        position: absolute;
+        left: 46%;
+        top: 56%;
+        width: 40%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, #1b4a9a55, #1b4a9a00);
+        transform: translate(-50%, -50%);
+        animation: gbreathe 9s 1s ease-in-out infinite both;
+        pointer-events: none;
+    }
+    .orbit__core {
+        position: absolute;
+        left: 46%;
+        top: 56%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 34%;
+        animation: gpop 1.6s 0.2s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .orbit__core img {
+        width: 48%;
+        height: auto;
+    }
+    .orbit__core .label {
+        letter-spacing: var(--ls-wide);
+        color: var(--gold);
+        white-space: nowrap;
+    }
+    .orbit__node {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        animation: gpop 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .orbit__disc {
+        width: clamp(52px, 10vw, 68px);
+        height: clamp(52px, 10vw, 68px);
+        border-radius: 50%;
+        background: var(--navy-950);
+        box-shadow:
+            0 0 0 1px #c19d6a99,
+            0 0 0 8px #c19d6a12;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .orbit__disc--lit {
+        width: clamp(64px, 13vw, 88px);
+        height: clamp(64px, 13vw, 88px);
+        background: var(--paper);
+        box-shadow:
+            0 0 0 1px var(--gold),
+            0 0 0 8px #c19d6a1a,
+            0 0 40px #1b4a9a66;
+        overflow: hidden;
+    }
+    .orbit__disc--lit img {
+        width: 64%;
+        height: auto;
+    }
+    .orbit__diamond {
+        width: 9px;
+        height: 9px;
+        background: var(--gold);
+        transform: rotate(45deg);
+    }
+    .orbit__cap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        font-weight: 500;
+        font-size: var(--fs-label);
+        letter-spacing: var(--ls);
+        text-transform: uppercase;
+    }
+    .orbit__sub {
+        color: var(--haze);
+    }
+</style>

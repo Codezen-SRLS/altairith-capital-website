@@ -1,0 +1,115 @@
+---
+// Consent core. Runs in <head> before any tracker so Google Consent Mode v2
+// defaults to "denied" and Clarity is only injected after analytics consent.
+const gaId = import.meta.env.PUBLIC_GA_ID || "";
+const clarityId = import.meta.env.PUBLIC_CLARITY_ID || "";
+const enabled = Boolean(gaId || clarityId);
+---
+
+{
+    enabled && (
+        <>
+            {gaId && <link rel="preconnect" href="https://www.googletagmanager.com" />}
+            <script is:inline define:vars={{ gaId, clarityId }}>
+                (function () {
+                    var KEY = "altairith-consent-v1";
+                    var MAX_AGE = 182 * 864e5; // ask again after ~6 months
+                    var TRACKER_COOKIES = ["_ga", "_gid", "_gat", "_clck", "_clsk"];
+
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() {
+                        window.dataLayer.push(arguments);
+                    }
+                    window.gtag = gtag;
+                    gtag("consent", "default", {
+                        analytics_storage: "denied",
+                        ad_storage: "denied",
+                        ad_user_data: "denied",
+                        ad_personalization: "denied",
+                        wait_for_update: 500,
+                    });
+                    gtag("set", "ads_data_redaction", true);
+
+                    function read() {
+                        try {
+                            var v = JSON.parse(localStorage.getItem(KEY) || "null");
+                            if (v && typeof v.analytics === "boolean" && Date.now() - v.ts < MAX_AGE) return v;
+                        } catch (e) {}
+                        return null;
+                    }
+                    function write(v) {
+                        try {
+                            localStorage.setItem(KEY, JSON.stringify(v));
+                        } catch (e) {}
+                    }
+
+                    var clarityLoaded = false;
+                    function loadClarity() {
+                        if (!clarityId || clarityLoaded) return;
+                        clarityLoaded = true;
+                        (function (c, l, a, r, i, t, y) {
+                            c[a] =
+                                c[a] ||
+                                function () {
+                                    (c[a].q = c[a].q || []).push(arguments);
+                                };
+                            t = l.createElement(r);
+                            t.async = 1;
+                            t.src = "https://www.clarity.ms/tag/" + i;
+                            y = l.getElementsByTagName(r)[0];
+                            y.parentNode.insertBefore(t, y);
+                        })(window, document, "clarity", "script", clarityId);
+                    }
+
+                    function clearTrackerCookies() {
+                        var parts = location.hostname.split(".");
+                        document.cookie.split(";").forEach(function (c) {
+                            var name = c.split("=")[0].trim();
+                            if (!TRACKER_COOKIES.some(function (p) { return name.indexOf(p) === 0; })) return;
+                            document.cookie = name + "=; Max-Age=0; path=/";
+                            for (var i = 0; i < parts.length - 1; i++) {
+                                document.cookie = name + "=; Max-Age=0; path=/; domain=." + parts.slice(i).join(".");
+                            }
+                        });
+                    }
+
+                    function apply(granted) {
+                        gtag("consent", "update", { analytics_storage: granted ? "granted" : "denied" });
+                        if (granted) {
+                            loadClarity();
+                            if (window.clarity) window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
+                        } else {
+                            if (window.clarity) window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+                            clearTrackerCookies();
+                        }
+                    }
+
+                    var stored = read();
+                    if (stored) apply(stored.analytics);
+
+                    if (gaId) {
+                        gtag("js", new Date());
+                        gtag("config", gaId);
+                        var s = document.createElement("script");
+                        s.async = true;
+                        s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+                        document.head.appendChild(s);
+                    }
+
+                    window.altairithConsent = {
+                        trackers: [gaId && "Google Analytics", clarityId && "Microsoft Clarity"].filter(Boolean),
+                        get: read,
+                        set: function (analytics) {
+                            var v = { analytics: !!analytics, ts: Date.now() };
+                            var wasGranted = (read() || {}).analytics === true;
+                            write(v);
+                            apply(v.analytics);
+                            // Clarity cannot be unloaded mid-session; reload so a revocation takes full effect.
+                            if (wasGranted && !v.analytics && clarityLoaded) location.reload();
+                        },
+                    };
+                })();
+            </script>
+        </>
+    )
+}

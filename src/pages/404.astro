@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import emblem from "../assets/emblem-light.png";
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Contact from "../components/Contact.astro";
+import { site } from "../data/site";
+---
+
+<Base title="Page not found" robots="noindex, nofollow" structuredData={false}>
+    <Header base="/" />
+    <main id="main">
+        <section id="top" class="nf">
+            <Image class="nf__mark" src={emblem} alt="" width={600} />
+            <div class="nf__copy">
+                <p class="eyebrow">Error 404</p>
+                <h1 class="display nf__title">Off the <span>chart</span>.</h1>
+                <p class="nf__text">
+                    The page you’re looking for doesn’t exist, was moved, or is temporarily unavailable.
+                </p>
+                <div class="nf__ctas">
+                    <a href="/" class="btn btn--primary">Go home <span aria-hidden="true">→</span></a>
+                    <a href={`mailto:${site.email}`} class="btn">Contact Us</a>
+                </div>
+            </div>
+        </section>
+        <Contact footerOnly />
+    </main>
+</Base>
+
+<style>
+    .nf {
+        position: relative;
+        min-height: 90svh;
+        display: flex;
+        align-items: flex-end;
+        padding: 140px var(--gutter) 96px;
+        overflow: hidden;
+        background: radial-gradient(60% 60% at 70% 45%, rgb(27 74 154 / 0.35), transparent);
+    }
+    .nf__mark {
+        position: absolute;
+        right: 6%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: min(420px, 50vw);
+        height: auto;
+        opacity: 0.08;
+    }
+    .nf__copy {
+        position: relative;
+        max-width: 720px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        animation: rise 1s 0.2s both;
+    }
+    .nf__title span {
+        color: var(--gold);
+    }
+    .nf__text {
+        max-width: 520px;
+        color: var(--mist);
+    }
+    .nf__ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+</style>

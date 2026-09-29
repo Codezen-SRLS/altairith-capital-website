@@ -1,0 +1,258 @@
+---
+const trackers = [
+    import.meta.env.PUBLIC_GA_ID && "Google Analytics",
+    import.meta.env.PUBLIC_CLARITY_ID && "Microsoft Clarity",
+].filter(Boolean) as string[];
+const enabled = trackers.length > 0;
+const trackerList = trackers.join(" and ");
+---
+
+{
+    enabled && (
+        <section
+            id="cc"
+            class="cc"
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="cc-title"
+            aria-describedby="cc-desc"
+            hidden
+        >
+            <button class="cc__close" type="button" data-cc="reject" aria-label="Reject optional cookies and close">
+                ×
+            </button>
+            <p id="cc-title" class="eyebrow">Cookies</p>
+            <p id="cc-desc" class="cc__text">
+                We use strictly necessary storage to run this site. With your consent we also use analytics
+                ({trackerList}) to understand how it is used. You can change your choice at any time from
+                “Cookie settings” in the footer. <a href="/privacy/#cookies">Privacy &amp; cookie policy</a>.
+            </p>
+            <div id="cc-prefs" class="cc__prefs" hidden>
+                <label class="cc__row">
+                    <span>
+                        <strong>Strictly necessary</strong>
+                        <small>Remembers your cookie choice. Always active.</small>
+                    </span>
+                    <input type="checkbox" checked disabled />
+                </label>
+                <label class="cc__row">
+                    <span>
+                        <strong>Analytics</strong>
+                        <small>{trackerList}: aggregated usage statistics and session insights.</small>
+                    </span>
+                    <input type="checkbox" id="cc-analytics" />
+                </label>
+            </div>
+            <div class="cc__actions">
+                <button class="btn" type="button" data-cc="reject">Reject</button>
+                <button class="btn" type="button" data-cc="prefs">Preferences</button>
+                <button class="btn" type="button" data-cc="save" hidden>Save choice</button>
+                <button class="btn" type="button" data-cc="accept">Accept all</button>
+            </div>
+        </section>
+    )
+}
+
+{
+    enabled && (
+        <script is:inline>
+            (function () {
+                var api = window.altairithConsent;
+                var box = document.getElementById("cc");
+                if (!api || !box) return;
+                var prefs = document.getElementById("cc-prefs");
+                var toggle = document.getElementById("cc-analytics");
+                var btnPrefs = box.querySelector('[data-cc="prefs"]');
+                var btnSave = box.querySelector('[data-cc="save"]');
+
+                function showPrefs(on) {
+                    prefs.hidden = !on;
+                    btnPrefs.hidden = on;
+                    btnSave.hidden = !on;
+                }
+                function open(withPrefs) {
+                    var cur = api.get();
+                    toggle.checked = !!(cur && cur.analytics);
+                    showPrefs(!!withPrefs);
+                    box.hidden = false;
+                    requestAnimationFrame(function () {
+                        box.classList.add("is-open");
+                    });
+                }
+                function close() {
+                    box.classList.remove("is-open");
+                    box.hidden = true;
+                }
+                box.addEventListener("click", function (e) {
+                    var b = e.target.closest("[data-cc]");
+                    if (!b) return;
+                    var a = b.getAttribute("data-cc");
+                    if (a === "prefs") return showPrefs(true), toggle.focus();
+                    api.set(a === "accept" ? true : a === "reject" ? false : toggle.checked);
+                    close();
+                });
+                box.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") close();
+                });
+                document.addEventListener("click", function (e) {
+                    var t = e.target.closest("[data-cookie-settings]");
+                    if (!t) return;
+                    e.preventDefault();
+                    open(true);
+                    box.querySelector("button, input:not([disabled])").focus();
+                });
+                document.querySelectorAll("[data-cookie-settings]").forEach(function (el) {
+                    el.hidden = false;
+                });
+                if (!api.get()) open(false);
+            })();
+        </script>
+    )
+}
+
+<style>
+    .cc {
+        position: fixed;
+        left: var(--gutter);
+        bottom: 20px;
+        z-index: 50;
+        width: min(440px, calc(100vw - 2 * var(--gutter)));
+        padding: 28px 24px 24px;
+        background: var(--navy-950);
+        border: 1px solid var(--line);
+        border-top: 1px solid var(--gold);
+        box-shadow: 0 24px 80px rgb(0 0 0 / 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .cc[hidden] {
+        display: none;
+    }
+    .cc.is-open {
+        opacity: 1;
+        transform: none;
+    }
+    .cc__close {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 0;
+        color: var(--muted);
+        font: 300 24px/1 var(--font-body);
+        cursor: pointer;
+    }
+    .cc__close:hover {
+        color: var(--gold);
+    }
+    .cc__text {
+        font-size: var(--fs-sm);
+        line-height: 1.6;
+        color: var(--mist);
+    }
+    .cc__text a {
+        color: var(--paper);
+        border-bottom: 1px solid var(--gold);
+    }
+    .cc__prefs {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--line);
+    }
+    .cc__prefs[hidden] {
+        display: none;
+    }
+    .cc__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        cursor: pointer;
+    }
+    .cc__row span {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .cc__row strong {
+        font-weight: 500;
+        font-size: var(--fs-sm);
+    }
+    .cc__row small {
+        font-size: var(--fs-sm);
+        color: var(--haze);
+        line-height: 1.5;
+    }
+    .cc__row input {
+        appearance: none;
+        flex: none;
+        width: 38px;
+        height: 20px;
+        border: 1px solid rgb(244 242 238 / 0.35);
+        border-radius: 20px;
+        position: relative;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s;
+    }
+    .cc__row input::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--paper);
+        transition: transform 0.2s;
+    }
+    .cc__row input:checked {
+        background: var(--gold);
+        border-color: var(--gold);
+    }
+    .cc__row input:checked::after {
+        transform: translateX(18px);
+        background: var(--navy-800);
+    }
+    .cc__row input:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+    }
+    .cc__actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 8px;
+    }
+    .cc__actions .btn {
+        justify-content: center;
+        padding: 14px 12px;
+        letter-spacing: var(--ls);
+    }
+    @media (max-width: 480px) {
+        .cc {
+            left: 12px;
+            bottom: 12px;
+            width: calc(100vw - 24px);
+            padding: 22px 18px 18px;
+            gap: 12px;
+        }
+        .cc__actions {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+        .cc__actions .btn {
+            padding: 14px 4px;
+            letter-spacing: 0.1em;
+        }
+    }
+    .cc__actions .btn[hidden] {
+        display: none;
+    }
+</style>
