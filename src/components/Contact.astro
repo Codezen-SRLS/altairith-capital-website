@@ -1,0 +1,144 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+    /** Render only the footer (secondary pages). */
+    footerOnly?: boolean;
+}
+const { footerOnly = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<section
+    id={footerOnly ? undefined : "contact"}
+    class:list={["contact", { "contact--compact": footerOnly }]}
+    aria-labelledby={footerOnly ? undefined : "contact-title"}
+>
+    <div class="wrap contact__inner">
+        {
+            !footerOnly && (
+                <>
+                    <div class="contact__head">
+                        <p class="eyebrow">06 · Contact</p>
+                        <h2 id="contact-title" class="contact__title">Get in touch</h2>
+                    </div>
+                    <address class="contact__grid">
+                        <div class="contact__item">
+                            <h3>Address</h3>
+                            <p>{site.address.full}</p>
+                        </div>
+                        <div class="contact__item">
+                            <h3>Email</h3>
+                            <a class="contact__mail" href={`mailto:${site.email}`}>
+                                {site.email}
+                            </a>
+                        </div>
+                    </address>
+                </>
+            )
+        }
+        <footer class="foot label">
+            <a href="/" aria-label={`${site.title} home`}>
+                <img src="/assets/logo-lockup-light.png" alt={site.title} width="534" height="144" loading="lazy" />
+            </a>
+            <span>© {year} {site.title} • All rights reserved • {site.legalName}</span>
+            <span class="foot__links">
+                <a href="/privacy/">Privacy</a>
+                <button type="button" class="foot__btn" data-cookie-settings hidden>Cookie settings</button>
+                <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+            </span>
+        </footer>
+    </div>
+</section>
+
+<style>
+    .contact {
+        padding: clamp(80px, 10vw, 128px) var(--gutter) 40px;
+    }
+    .contact--compact {
+        padding-top: 0;
+    }
+    .contact__inner {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(40px, 5vw, 64px);
+    }
+    .contact__head {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .contact__title {
+        font-family: var(--font-display);
+        font-size: clamp(24px, 3.6vw, 48px);
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    .contact__grid {
+        font-style: normal;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 40px;
+        border-top: 1px solid var(--line);
+        padding-top: 32px;
+    }
+    .contact__item {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .contact__item h3 {
+        font-family: var(--font-display);
+        font-size: 9px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+    .contact__item p,
+    .contact__mail {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+    .contact__mail {
+        border-bottom: 1px solid var(--gold);
+        align-self: flex-start;
+        padding-bottom: 2px;
+    }
+    .foot {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line-soft);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--muted);
+    }
+    .foot img {
+        height: 28px;
+        width: auto;
+    }
+    .foot__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    .foot__btn {
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        letter-spacing: inherit;
+        text-transform: inherit;
+        color: inherit;
+        cursor: pointer;
+    }
+    .foot__btn:hover {
+        color: var(--gold);
+    }
+    .foot__btn[hidden] {
+        display: none;
+    }
+</style>

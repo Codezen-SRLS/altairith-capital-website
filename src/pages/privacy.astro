@@ -1,0 +1,165 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Contact from "../components/Contact.astro";
+import { site } from "../data/site";
+
+const updated = "29 September 2026";
+---
+
+<Base
+    title="Privacy & Cookie Policy"
+    description={`How ${site.legalName} processes personal data and uses cookies on ${site.url.replace("https://", "")}.`}
+>
+    <Header base="/" />
+    <main id="main">
+        <article id="top" class="section legal">
+            <div class="legal__inner">
+                <p class="eyebrow">Legal</p>
+                <h1 class="display">Privacy &amp; Cookie Policy</h1>
+                <p class="legal__meta label">Last updated {updated}</p>
+
+                <h2>1. Data controller</h2>
+                <p>
+                    {site.legalName}, {site.address.full}. Email: <a href={`mailto:${site.email}`}>{site.email}</a>.
+                </p>
+
+                <h2>2. What we collect</h2>
+                <p>
+                    This website has no forms or user accounts. We process personal data only when you
+                    contact us by email (your address and the content of your message), to reply to you. The
+                    legal basis is our legitimate interest in responding to your request (Art. 6(1)(f) GDPR).
+                </p>
+                <p>
+                    If you give consent, we also collect aggregated, pseudonymous usage data through the
+                    analytics tools described below (Art. 6(1)(a) GDPR).
+                </p>
+
+                <h2 id="cookies">3. Cookies and similar technologies</h2>
+                <p>
+                    <strong>Strictly necessary.</strong> We store your cookie choice in your browser’s local
+                    storage (<code>altairith-consent-v1</code>) for up to 6 months. This does not require consent.
+                </p>
+                <p>
+                    <strong>Analytics (only with your consent).</strong> Nothing below is loaded until you
+                    choose “Accept all” or enable Analytics in the preferences.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Microsoft Clarity</strong> (Microsoft Corporation) records how visitors use the
+                        page, such as clicks, scrolling, and heatmaps. Cookies: <code>_clck</code> (1 year),
+                        <code>_clsk</code> (1 day). See the <a
+                            href="https://privacy.microsoft.com/privacystatement"
+                            rel="noopener"
+                            target="_blank">Microsoft privacy statement</a
+                        >.
+                    </li>
+                    <li>
+                        <strong>Google Analytics 4</strong> (Google Ireland Ltd.), when enabled, provides
+                        aggregated traffic statistics in Consent Mode v2. It sets <code>_ga</code> and
+                        <code>_ga_*</code> cookies (up to 2 years) only after consent. See the <a
+                            href="https://policies.google.com/privacy"
+                            rel="noopener"
+                            target="_blank">Google privacy policy</a
+                        >.
+                    </li>
+                </ul>
+                <p>
+                    Data processed by these providers may be transferred outside the EEA under the EU–US Data
+                    Privacy Framework or Standard Contractual Clauses. Declining analytics does not affect
+                    how the site works.
+                </p>
+                <p>
+                    You can change or withdraw your consent at any time via
+                    <button type="button" class="legal__link" data-cookie-settings>Cookie settings</button>
+                    (also available in the footer of every page).
+                </p>
+
+                <h2>4. Retention</h2>
+                <p>
+                    We keep email correspondence for as long as needed to handle your request and meet legal
+                    obligations. Analytics data is kept according to each provider’s retention settings, which
+                    is at most 14 months.
+                </p>
+
+                <h2>5. Your rights</h2>
+                <p>
+                    You have the right to access, rectify, erase, restrict, or port your data, to object to
+                    processing, and to withdraw consent at any time (Arts. 15–22 GDPR). Write to
+                    <a href={`mailto:${site.email}`}>{site.email}</a>. You can also lodge a complaint with the
+                    Italian supervisory authority, the <a
+                        href="https://www.garanteprivacy.it"
+                        rel="noopener"
+                        target="_blank">Garante per la protezione dei dati personali</a
+                    >.
+                </p>
+            </div>
+        </article>
+        <Contact footerOnly />
+    </main>
+</Base>
+
+<style>
+    .legal {
+        padding-top: clamp(140px, 16vw, 200px);
+    }
+    .legal__inner {
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--mist);
+    }
+    .legal .display {
+        font-size: clamp(24px, 3.6vw, 44px);
+        line-height: 1.15;
+        color: var(--paper);
+        margin-top: 8px;
+    }
+    .legal__meta {
+        color: var(--muted);
+        margin-bottom: 24px;
+    }
+    h2 {
+        margin-top: 28px;
+        font-family: var(--font-body);
+        font-weight: 500;
+        font-size: 13px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--gold);
+    }
+    strong {
+        font-weight: 500;
+        color: var(--paper);
+    }
+    ul {
+        margin: 0;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    code {
+        font-size: 0.9em;
+        color: var(--paper);
+    }
+    a,
+    .legal__link {
+        color: var(--paper);
+        border-bottom: 1px solid var(--gold);
+    }
+    .legal__link {
+        background: none;
+        border-width: 0 0 1px;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+    }
+    .legal__link:hover {
+        color: var(--gold);
+    }
+</style>

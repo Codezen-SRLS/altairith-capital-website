@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/christian_vari.jpeg";
+import { chairman } from "../data/site";
+---
+
+<section id="chairman" class="section on-paper" aria-labelledby="chairman-title">
+    <div class="wrap chair">
+        <figure class="chair__fig">
+            <div class="chair__photo">
+                <Image
+                    src={portrait}
+                    alt={`${chairman.name}, ${chairman.role} of Altairith Capital`}
+                    widths={[360, 540, 724]}
+                    sizes="(min-width: 900px) 560px, 100vw"
+                    loading="lazy"
+                />
+                <div class="chair__tint" aria-hidden="true"></div>
+            </div>
+            <figcaption class="label">
+                <span>{chairman.name}</span>
+                <span>{chairman.role}</span>
+            </figcaption>
+        </figure>
+        <div class="chair__text">
+            <h2 id="chairman-title" class="eyebrow">02 · Message from the Chairman</h2>
+            <blockquote class="chair__quote" cite="#chairman">
+                <p class="chair__lead">{chairman.lead}</p>
+                <div class="chair__body">
+                    {chairman.body.map((p) => <p>{p}</p>)}
+                </div>
+            </blockquote>
+            <p class="chair__sign rule">{chairman.name}, Chairman</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .chair {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+        gap: clamp(40px, 6vw, 96px);
+        align-items: start;
+    }
+    .chair__fig {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .chair__photo {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        background: var(--paper-2);
+        overflow: hidden;
+    }
+    .chair__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        filter: grayscale(1) contrast(1.05);
+    }
+    .chair__tint {
+        position: absolute;
+        inset: 0;
+        background: #00176126;
+        mix-blend-mode: multiply;
+    }
+    figcaption {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        letter-spacing: 0.24em;
+        color: var(--ink-2);
+    }
+    .chair__text {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+    .chair__quote {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+    .chair__lead {
+        font-size: clamp(26px, 2.8vw, 40px);
+        line-height: 1.3;
+        font-weight: 300;
+    }
+    .chair__body {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        max-width: 560px;
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--ink);
+    }
+    .chair__sign {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 12px;
+        font-weight: 500;
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+</style>
