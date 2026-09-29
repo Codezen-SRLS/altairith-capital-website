@@ -22,9 +22,9 @@ jobs:
             # To enable Google Analytics, add a GA_TRACKING_ID secret (G-XXXXXXXXXX) and uncomment:
             # PUBLIC_GA_ID: ${{ secrets.GA_TRACKING_ID }}
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v7
               with:
                   node-version: 22
                   cache: npm
