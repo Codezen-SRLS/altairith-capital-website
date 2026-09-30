@@ -56,6 +56,7 @@ export const chairman = {
         "https://x.com/christianvari_",
         "https://github.com/christianvari",
         "https://www.codezen.tech/#christian-vari",
+        "https://orcid.org/0009-0006-3613-4774",
     ],
     lead: "I'm Christian Vari, and I founded Altairith Capital with a clear vision: to bridge cutting-edge expertise with strategic capital stewardship.",
     body: [
