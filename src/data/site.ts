@@ -48,6 +48,15 @@ export const about = {
 export const chairman = {
     name: "Christian Vari",
     role: "Chairman & Founder",
+    /** Personal site; its Person node (#person) links back to ours. */
+    url: "https://www.christianvari.dev/",
+    sameAs: [
+        "https://www.christianvari.dev/#person",
+        "https://www.linkedin.com/in/christianvari/",
+        "https://x.com/christianvari_",
+        "https://github.com/christianvari",
+        "https://www.codezen.tech/#christian-vari",
+    ],
     lead: "I'm Christian Vari, and I founded Altairith Capital with a clear vision: to bridge cutting-edge expertise with strategic capital stewardship.",
     body: [
         "Altairith Capital is how I compound the outcomes of the companies I build and invest in, channeling profits into assets and ideas that last.",

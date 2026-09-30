@@ -22,7 +22,6 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
 const imageUrl = new URL(image, site.url).href;
 const orgId = `${site.url}/#organization`;
 const personId = `${site.url}/#christian-vari`;
-const twitterUrl = (h: string) => `https://x.com/${h.replace(/^@/, "")}`;
 
 const jsonLd = {
     "@context": "https://schema.org",
@@ -71,11 +70,12 @@ const jsonLd = {
             "@type": "Person",
             "@id": personId,
             name: chairman.name,
+            url: chairman.url,
             jobTitle: chairman.role,
             description: "Security researcher, inventor, and founder of Altairith Capital and Codezen.",
             image: new URL("/og/christian-vari.jpg", site.url).href,
             worksFor: { "@id": orgId },
-            sameAs: [twitterUrl(site.authorTwitter)],
+            sameAs: chairman.sameAs,
         },
         {
             "@type": "WebSite",

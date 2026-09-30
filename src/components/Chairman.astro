@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import portrait from "../assets/christian_vari.jpeg";
 import { chairman } from "../data/site";
+
+const [leadBefore, leadAfter] = chairman.lead.split(chairman.name);
 ---
 
 <section id="chairman" class="section on-paper" aria-labelledby="chairman-title">
@@ -18,19 +20,23 @@ import { chairman } from "../data/site";
                 <div class="chair__tint" aria-hidden="true"></div>
             </div>
             <figcaption class="label">
-                <span>{chairman.name}</span>
+                <a class="chair__name" href={chairman.url} rel="me">{chairman.name}</a>
                 <span>{chairman.role}</span>
             </figcaption>
         </figure>
         <div class="chair__text">
             <h2 id="chairman-title" class="eyebrow">02 · From the Chairman</h2>
             <blockquote class="chair__quote" cite="#chairman">
-                <p class="chair__lead">{chairman.lead}</p>
+                <p class="chair__lead">
+                    {leadBefore}<a class="chair__name" href={chairman.url} rel="me">{chairman.name}</a>{leadAfter}
+                </p>
                 <div class="chair__body">
                     {chairman.body.map((p) => <p>{p}</p>)}
                 </div>
             </blockquote>
-            <p class="chair__sign rule">{chairman.name}, Chairman</p>
+            <p class="chair__sign rule">
+                <span><a class="chair__name" href={chairman.url} rel="me">{chairman.name}</a>, Chairman</span>
+            </p>
         </div>
     </div>
 </section>
@@ -94,6 +100,12 @@ import { chairman } from "../data/site";
         gap: 18px;
         max-width: 560px;
         color: var(--ink);
+    }
+    .chair__name {
+        text-decoration: underline;
+        text-decoration-color: var(--gold);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
     }
     .chair__sign {
         display: flex;

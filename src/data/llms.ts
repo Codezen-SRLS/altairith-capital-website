@@ -33,7 +33,7 @@ export function llmsFull() {
 - Website: ${site.url}
 - Founded: ${site.foundingDate}, privately held
 - Sectors include: ${about.sectors.join(", ")}
-- Founder & Chairman: ${chairman.name}
+- Founder & Chairman: ${chairman.name} (${chairman.url})
 - Email: ${site.email}
 - Address: ${site.address.full}
 - LinkedIn: ${site.linkedin}
